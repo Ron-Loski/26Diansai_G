@@ -1,0 +1,163 @@
+Flow report for DAC904_HighSpeedDAC
+Wed Jul 29 20:51:00 2026
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Flow Summary                                                                     ;
++------------------------------------+---------------------------------------------+
+; Flow Status                        ; Successful - Wed Jul 29 20:51:00 2026       ;
+; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Full Version ;
+; Revision Name                      ; DAC904_HighSpeedDAC                         ;
+; Top-level Entity Name              ; DAC904_WriteTEST                            ;
+; Family                             ; Cyclone IV E                                ;
+; Device                             ; EP4CE10F17C8                                ;
+; Timing Models                      ; Final                                       ;
+; Total logic elements               ; 1,515 / 10,320 ( 15 % )                     ;
+;     Total combinational functions  ; 1,087 / 10,320 ( 11 % )                     ;
+;     Dedicated logic registers      ; 1,114 / 10,320 ( 11 % )                     ;
+; Total registers                    ; 1114                                        ;
+; Total pins                         ; 42 / 180 ( 23 % )                           ;
+; Total virtual pins                 ; 25                                          ;
+; Total memory bits                  ; 147,456 / 423,936 ( 35 % )                  ;
+; Embedded Multiplier 9-bit elements ; 0 / 46 ( 0 % )                              ;
+; Total PLLs                         ; 1 / 2 ( 50 % )                              ;
++------------------------------------+---------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 07/29/2026 20:50:38 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; DAC904_HighSpeedDAC ;
++-------------------+---------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                                                                                        ;
++-------------------------------------+-----------------------------------------------------------------------------------------------------------------------+---------------------+------------------+------------------+
+; Assignment Name                     ; Value                                                                                                                 ; Default Value       ; Entity Name      ; Section Id       ;
++-------------------------------------+-----------------------------------------------------------------------------------------------------------------------+---------------------+------------------+------------------+
+; COMPILER_SIGNATURE_ID               ; 5218849657993.178532943828820                                                                                         ; --                  ; --               ; --               ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST     ; On                                                                                                                    ; --                  ; --               ; eda_simulation   ;
+; EDA_NETLIST_WRITER_OUTPUT_DIR       ; D:/diansai2025/DAC904_HighSpeedDAC_V1.6-SinExample/prj/simulation/qsim/                                               ; --                  ; --               ; eda_simulation   ;
+; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                                                                                                           ; --                  ; --               ; eda_simulation   ;
+; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)                                                                                             ; <None>              ; --               ; --               ;
+; ENABLE_LOGIC_ANALYZER_INTERFACE     ; On                                                                                                                    ; --                  ; --               ; --               ;
+; ENABLE_SIGNALTAP                    ; On                                                                                                                    ; --                  ; --               ; --               ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                                                                                                    ; --                  ; --               ; --               ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                                                                                                     ; --                  ; --               ; --               ;
+; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                                                                                                     ; --                  ; --               ; --               ;
+; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                                                                                                     ; --                  ; --               ; --               ;
+; OUTPUT_IO_TIMING_NEAR_END_VMEAS     ; Half Vccio                                                                                                            ; --                  ; --               ; --               ;
+; OUTPUT_IO_TIMING_NEAR_END_VMEAS     ; Half Vccio                                                                                                            ; --                  ; --               ; --               ;
+; PARTITION_COLOR                     ; 16764057                                                                                                              ; --                  ; DAC904_WriteTEST ; Top              ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                                                                                                 ; --                  ; DAC904_WriteTEST ; Top              ;
+; PARTITION_NETLIST_TYPE              ; SOURCE                                                                                                                ; --                  ; DAC904_WriteTEST ; Top              ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                                                                                   ; --                  ; --               ; --               ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                                                                                 ; --                  ; --               ; --               ;
+; SLD_FILE                            ; db/ad9233_capture_auto_stripped.stp                                                                                   ; --                  ; --               ; --               ;
+; SLD_NODE_CREATOR_ID                 ; 110                                                                                                                   ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_ENTITY_NAME                ; sld_signaltap                                                                                                         ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_RAM_BLOCK_TYPE=M9K                                                                                                ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_DATA_BITS=24                                                                                                      ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_BITS=24                                                                                                   ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_NODE_INFO=805334528                                                                                               ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_POWER_UP_TRIGGER=0                                                                                                ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_INVERSION_MASK=00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_INVERSION_MASK_LENGTH=98                                                                                          ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=0                                                                         ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_SEGMENT_SIZE=4096                                                                                                 ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_ATTRIBUTE_MEM_MODE=OFF                                                                                            ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STATE_FLOW_USE_GENERATED=0                                                                                        ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STATE_BITS=11                                                                                                     ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_BUFFER_FULL_STOP=1                                                                                                ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_CURRENT_RESOURCE_WIDTH=1                                                                                          ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_LEVEL=1                                                                                                   ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_SAMPLE_DEPTH=4096                                                                                                 ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_IN_ENABLED=0                                                                                              ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_ADVANCED_TRIGGER_ENTITY=basic,1,                                                                                  ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_LEVEL_PIPELINE=1                                                                                          ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_ENABLE_ADVANCED_TRIGGER=0                                                                                         ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_NODE_CRC_LOWORD=49956                                                                                             ; --                  ; --               ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_NODE_CRC_HIWORD=63733                                                                                             ; --                  ; --               ; auto_signaltap_0 ;
+; TOP_LEVEL_ENTITY                    ; DAC904_WriteTEST                                                                                                      ; DAC904_HighSpeedDAC ; --               ; --               ;
+; USE_SIGNALTAP_FILE                  ; ../debug/ad9233_capture.stp                                                                                           ; --                  ; --               ; --               ;
++-------------------------------------+-----------------------------------------------------------------------------------------------------------------------+---------------------+------------------+------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:05     ; 1.0                     ; 4750 MB             ; 00:00:02                           ;
+; Fitter                    ; 00:00:08     ; 2.4                     ; 5876 MB             ; 00:00:02                           ;
+; Assembler                 ; 00:00:01     ; 1.0                     ; 4603 MB             ; 00:00:00                           ;
+; TimeQuest Timing Analyzer ; 00:00:03     ; 5.5                     ; 4766 MB             ; 00:00:01                           ;
+; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 4558 MB             ; 00:00:00                           ;
+; Total                     ; 00:00:18     ; --                      ; --                  ; 00:00:05                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                        ;
++---------------------------+------------------+-----------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++---------------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis      ; DESKTOP-6L003RM  ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter                    ; DESKTOP-6L003RM  ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler                 ; DESKTOP-6L003RM  ; Windows 7 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; DESKTOP-6L003RM  ; Windows 7 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; DESKTOP-6L003RM  ; Windows 7 ; 6.2        ; x86_64         ;
++---------------------------+------------------+-----------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off DAC904_HighSpeedDAC -c DAC904_HighSpeedDAC
+quartus_fit --read_settings_files=off --write_settings_files=off DAC904_HighSpeedDAC -c DAC904_HighSpeedDAC
+quartus_asm --read_settings_files=off --write_settings_files=off DAC904_HighSpeedDAC -c DAC904_HighSpeedDAC
+quartus_sta DAC904_HighSpeedDAC -c DAC904_HighSpeedDAC
+quartus_eda --read_settings_files=off --write_settings_files=off DAC904_HighSpeedDAC -c DAC904_HighSpeedDAC
+
+
+

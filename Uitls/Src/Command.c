@@ -12,6 +12,7 @@ static uint16_t CommandLineIndex = 0U;
 static uint8_t CommandRxBuffer[COMMAND_RX_DMA_SIZE];
 static float CommandFFTInput[COMMAND_FFT_COMPLEX_SIZE];
 static float CommandFFTOutput[COMMAND_FFT_SPECTRUM_SIZE];
+static volatile uint8_t WaveDumpRequest = 0U;
 
 /**
  * @brief 启动一次USART3 Receive-to-Idle DMA接收。
@@ -184,10 +185,29 @@ void Command_Judege(char *Line)
 	}
 
 	Command_Clear();
+	if (strcmp(Line, "WaveRaw") == 0)
+	{
+		WaveDumpRequest = 1U;
+		printf("WAVE_RAW_ARMED\r\n");
+		return;
+	}
+	if (strcmp(Line, "WaveDisplay") == 0)
+	{
+		WaveDumpRequest = 2U;
+		printf("WAVE_DISPLAY_ARMED\r\n");
+		return;
+	}
 	if (strcmp(Line, "Ques1") == 0)
 	{
 		Command = Ques1;
 	}
+}
+
+uint8_t Command_TakeWaveDumpRequest(void)
+{
+	uint8_t Request = WaveDumpRequest;
+	WaveDumpRequest = 0U;
+	return Request;
 }
 
 void Command_Execute(void)

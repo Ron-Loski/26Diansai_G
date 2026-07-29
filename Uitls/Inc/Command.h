@@ -37,6 +37,8 @@ void Command_Judege(char *Line);
  */
 void Command_Execute(void);
 
+uint8_t Command_TakeWaveDumpRequest(void);
+
 /**
  * @brief 命令学习功能预留接口。
  * @note 无输入参数。

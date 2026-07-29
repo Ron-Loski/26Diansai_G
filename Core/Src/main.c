@@ -48,6 +48,8 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+static Analyzer_Result_t AnalyzerResult;
+static uint32_t AnalyzerStatusTick;
 
 /* USER CODE END PV */
 
@@ -101,9 +103,23 @@ int main(void)
   MX_TIM3_Init();
   MX_USART2_UART_Init();
   MX_USART3_UART_Init();
-  MX_USART6_UART_Init();
   /* USER CODE BEGIN 2 */
   USART3_CommandRx_Init();
+  SignalAnalyzer_Init();
+  if (FPGACapture_Init() != HAL_OK)
+  {
+    printf("ANALYZER_ERROR,fpga_capture_init\r\n");
+  }
+  printf("ANALYZER_FW,H743VI_ADC_DIRECT_CAL,build=20260729_2110\r\n");
+  printf("ANALYZER_CAL,profile=adc_direct,scale=0.968936,"
+         "mv_per_code=0.299439\r\n");
+  printf("SPI3_PINCHECK,mode=%lu,pupd=%lu,af=%lu,idr=%lu\r\n",
+         (unsigned long)((GPIOC->MODER >> (11U * 2U)) & 3U),
+         (unsigned long)((GPIOC->PUPDR >> (11U * 2U)) & 3U),
+         (unsigned long)((GPIOC->AFR[1] >> ((11U - 8U) * 4U)) & 15U),
+         (unsigned long)((GPIOC->IDR >> 11U) & 1U));
+  printf("ANALYZER_START,raw_fs=25000000,decimation=13,"
+         "analysis_fs=1923076.923,n=4096,spi=SPI3_12MHz\r\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -111,6 +127,94 @@ int main(void)
   while (1)
   {
     Command_Execute();
+    FPGACapture_Service();
+
+    if ((HAL_GetTick() - AnalyzerStatusTick) >= 1000U)
+    {
+      const FPGA_CaptureStatus_t *status = FPGACapture_GetStatus();
+      AnalyzerStatusTick = HAL_GetTick();
+      printf("ANALYZER_STATUS,pll=%u,cfg=%u,busy=%u,ready=%u,"
+             "frame=%u,otr=%lu,good=%lu,crc=%lu,protocol=%lu,dma=%lu,"
+             "fw=2110,pc11_mode=%lu,pc11_pupd=%lu,pc11_af=%lu,"
+             "pc11_idr=%lu\r\n",
+             status->pll_locked, status->adc_configured,
+             status->capture_busy, status->frame_ready, status->frame_id,
+             (unsigned long)status->otr_count,
+             (unsigned long)status->good_frames,
+             (unsigned long)status->crc_errors,
+             (unsigned long)status->protocol_errors,
+             (unsigned long)status->dma_errors,
+             (unsigned long)((GPIOC->MODER >> (11U * 2U)) & 3U),
+             (unsigned long)((GPIOC->PUPDR >> (11U * 2U)) & 3U),
+             (unsigned long)((GPIOC->AFR[1] >>
+                              ((11U - 8U) * 4U)) & 15U),
+             (unsigned long)((GPIOC->IDR >> 11U) & 1U));
+    }
+
+    if (FPGACapture_FrameAvailable() != 0U)
+    {
+      const FPGA_CaptureStatus_t *capture_status =
+          FPGACapture_GetStatus();
+      const int16_t *capture_samples = FPGACapture_GetSamples();
+      uint8_t wave_dump_request = Command_TakeWaveDumpRequest();
+      if (SignalAnalyzer_Process(capture_samples,
+                                 capture_status->frame_id,
+                                 capture_status->otr_count,
+                                 &AnalyzerResult) != 0U)
+      {
+        uint32_t i;
+        printf("ANALYZER_RESULT,frame=%lu,f0=%.3f,upp=%.3f,"
+               "urms=%.3f,components=%u,otr=%lu,processing_us=%lu\r\n",
+               (unsigned long)AnalyzerResult.frame_id,
+               AnalyzerResult.fundamental_hz,
+               AnalyzerResult.upp_mv,
+               AnalyzerResult.urms_mv,
+               AnalyzerResult.component_count,
+               (unsigned long)AnalyzerResult.otr_count,
+               (unsigned long)AnalyzerResult.processing_us);
+        for (i = 0U; i < AnalyzerResult.component_count; ++i)
+        {
+          printf("ANALYZER_COMPONENT,n=%u,f=%.3f,peak_mv=%.3f,"
+                 "phase=%.6f\r\n",
+                 AnalyzerResult.component[i].harmonic_order,
+                 AnalyzerResult.component[i].frequency_hz,
+                 AnalyzerResult.component[i].amplitude_peak_mv,
+                 AnalyzerResult.component[i].phase_rad);
+        }
+      }
+      else
+      {
+        printf("ANALYZER_NO_VALID_COMPONENT,frame=%u\r\n",
+               capture_status->frame_id);
+      }
+
+      if (wave_dump_request == 1U)
+      {
+        uint32_t i;
+        printf("WAVE_RAW_BEGIN,frame=%u,fs=1923076.923,count=4096\r\n",
+               capture_status->frame_id);
+        for (i = 0U; i < FPGA_CAPTURE_SAMPLE_COUNT; ++i)
+        {
+          printf("%d\r\n", capture_samples[i]);
+        }
+        printf("WAVE_RAW_END\r\n");
+      }
+      else if (wave_dump_request == 2U)
+      {
+        const int16_t *display_wave = SignalAnalyzer_GetDisplayWave();
+        uint32_t i;
+        printf("WAVE_DISPLAY_BEGIN,frame=%u,periods=%u,count=%u\r\n",
+               capture_status->frame_id,
+               SignalAnalyzer_GetDisplayPeriods(),
+               ANALYZER_DISPLAY_POINTS);
+        for (i = 0U; i < ANALYZER_DISPLAY_POINTS; ++i)
+        {
+          printf("%d\r\n", display_wave[i]);
+        }
+        printf("WAVE_DISPLAY_END\r\n");
+      }
+      FPGACapture_ReleaseFrame();
+    }
 
     /* USER CODE END WHILE */
 

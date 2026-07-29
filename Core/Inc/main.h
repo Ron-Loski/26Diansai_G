@@ -69,6 +69,8 @@ void Error_Handler(void);
 #define FPGA_Tx_GPIO_Port GPIOC
 #define FPGA_Rx_Pin GPIO_PIN_7
 #define FPGA_Rx_GPIO_Port GPIOC
+#define FPGA_CAPTURE_CS_Pin GPIO_PIN_6
+#define FPGA_CAPTURE_CS_GPIO_Port GPIOC
 
 /* USER CODE BEGIN Private defines */
 

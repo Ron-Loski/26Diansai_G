@@ -34,3 +34,19 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t size)
 		USART3_CommandRx_Event(size);
 	}
 }
+
+void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+	if (hspi == &hspi3)
+	{
+		FPGACapture_SPIComplete();
+	}
+}
+
+void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi)
+{
+	if (hspi == &hspi3)
+	{
+		FPGACapture_SPIError();
+	}
+}

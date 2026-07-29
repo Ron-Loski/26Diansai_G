@@ -28,5 +28,7 @@
 #include "My_FFT.h"
 #include "CallBack.h"
 #include "Justfloat.h"
+#include "fpga_capture.h"
+#include "signal_analyzer.h"
 
 #endif

@@ -31,26 +31,6 @@ typedef struct SignalPara
 } SignalPara_t;
 
 /**
- * @brief 指定数量数据的常数最小二乘拟合参数。
- * @note Data只保存数组地址，不复制原始数据，因此结构体本身不占用大块RAM。
- */
-typedef struct
-{
-	const float *Data;                            /**< 指向待拟合的浮点数据数组。 */
-	float Fitted_Value;                          /**< 所有输入数据拟合得到的单一数值。 */
-} MathFitValue_t;
-
-/**
- * @brief 将指定数量的数据拟合为一个常数。
- * @param[in,out] Fit_Data 拟合参数；输入Data，输出Fitted_Value。
- * @param[in] Data_Count Fit_Data->Data中的有效数据数量，必须大于0。
- * @return 拟合成功返回1；指针为空或数据数量为0时返回0。
- * @note 使用最小二乘准则最小化所有数据与拟合值的平方误差，结果等于算术平均值。
- */
-uint8_t Math_FitConstantValue(MathFitValue_t *Fit_Data,
-                              uint32_t Data_Count);
-
-/**
  * @brief 将ADC时域数据转换为复数输入并执行CFFT和正频率幅值计算。
  * @param[in] Cfft_Handler 已初始化的CFFT句柄，fftLen决定FFT点数N。
  * @param[in] ADC_Buff ADC原始采样数组，至少包含N个uint16_t元素。

@@ -60,6 +60,9 @@ extern ADC_HandleTypeDef hadc1;
 extern TIM_HandleTypeDef htim3;
 extern DMA_HandleTypeDef hdma_usart3_rx;
 extern UART_HandleTypeDef huart3;
+extern DMA_HandleTypeDef hdma_spi3_tx;
+extern DMA_HandleTypeDef hdma_spi3_rx;
+extern SPI_HandleTypeDef hspi3;
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -228,6 +231,30 @@ void DMA1_Stream1_IRQHandler(void)
   /* USER CODE BEGIN DMA1_Stream1_IRQn 1 */
 
   /* USER CODE END DMA1_Stream1_IRQn 1 */
+}
+
+/**
+  * @brief This function handles DMA1 stream2 global interrupt.
+  */
+void DMA1_Stream2_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(&hdma_spi3_tx);
+}
+
+/**
+  * @brief This function handles DMA1 stream3 global interrupt.
+  */
+void DMA1_Stream3_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(&hdma_spi3_rx);
+}
+
+/**
+  * @brief This function handles SPI3 global interrupt.
+  */
+void SPI3_IRQHandler(void)
+{
+  HAL_SPI_IRQHandler(&hspi3);
 }
 
 /**

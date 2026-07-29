@@ -33,6 +33,8 @@ extern "C" {
 /* USER CODE END Includes */
 
 extern SPI_HandleTypeDef hspi3;
+extern DMA_HandleTypeDef hdma_spi3_tx;
+extern DMA_HandleTypeDef hdma_spi3_rx;
 
 /* USER CODE BEGIN Private defines */
 
@@ -41,6 +43,7 @@ extern SPI_HandleTypeDef hspi3;
 void MX_SPI3_Init(void);
 
 /* USER CODE BEGIN Prototypes */
+HAL_StatusTypeDef SPI3_ConfigureAnalyzerMode(void);
 
 /* USER CODE END Prototypes */
 
