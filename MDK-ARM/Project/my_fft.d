@@ -1,5 +1,4 @@
-project/my_fft.o: ..\Uitls\Src\My_FFT.c ..\Uitls\Inc\My_FFT.h \
-  ..\Uitls\Inc\g_Inc.h \
+project/my_fft.o: ..\Uitls\Src\My_FFT.c ..\Uitls\Inc\g_Inc.h \
   D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\arm_math.h \
   D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\arm_math_types.h \
   ..\Drivers\CMSIS\Include\cmsis_compiler.h \
@@ -59,5 +58,5 @@ project/my_fft.o: ..\Uitls\Src\My_FFT.c ..\Uitls\Inc\My_FFT.h \
   ..\Core\Inc\adc.h ..\Core\Inc\dma.h ..\Core\Inc\gpio.h \
   ..\Core\Inc\spi.h ..\Core\Inc\stm32h7xx_it.h ..\Core\Inc\tim.h \
   ..\Core\Inc\usart.h ..\Uitls\Inc\g_var.h ..\Uitls\Inc\Command.h \
-  ..\Uitls\Inc\My_Math.h ..\Uitls\Inc\CallBack.h \
+  ..\Uitls\Inc\My_Math.h ..\Uitls\Inc\My_FFT.h ..\Uitls\Inc\CallBack.h \
   ..\Uitls\Inc\Justfloat.h

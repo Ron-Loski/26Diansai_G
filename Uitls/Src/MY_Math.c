@@ -549,9 +549,47 @@ void Math_Feedback_FFTAndExtractPhase(const arm_cfft_instance_f32 *Cfft_Handler,
 	/* 计算正频率范围内各频点的幅值。 */
 	arm_cmplx_mag_f32(FFT_IN, FFT_OUT, FFT_Size / 2U);
 
-	/* 从FFT结果提取基波到四次谐波的频域参数。 */
+	/* 从FFT结果提取基波及最多两个谐波分量。 */
 	*pSignal = Math_AnalyzeSpectrum(
 	    Cfft_Handler, FFT_OUT, FFT_IN, Sample_Size);
+}
+
+/**
+ * @brief 将指定数量的数据拟合为一个常数。
+ * @param[in,out] Fit_Data 拟合参数；输入Data，输出Fitted_Value。
+ * @param[in] Data_Count Fit_Data->Data中的有效数据数量，必须大于0。
+ * @return 拟合成功返回1；指针为空或数据数量为0时返回0。
+ * @note 采用Kahan补偿求和降低大量浮点数据累加时的舍入误差。
+ * @note 最小化Σ(Data[i]-Fitted_Value)^2后，拟合结果等于算术平均值。
+ */
+uint8_t Math_FitConstantValue(MathFitValue_t *Fit_Data,
+                              uint32_t Data_Count)
+{
+	float Sum = 0.0f;
+	float Correction = 0.0f;
+
+	if (Fit_Data == NULL)
+	{
+		return 0U;
+	}
+
+	Fit_Data->Fitted_Value = 0.0f;
+	if ((Fit_Data->Data == NULL) || (Data_Count == 0UL))
+	{
+		return 0U;
+	}
+
+	for (uint32_t Index = 0UL; Index < Data_Count; Index++)
+	{
+		float CorrectedValue = Fit_Data->Data[Index] - Correction;
+		float NewSum = Sum + CorrectedValue;
+
+		Correction = (NewSum - Sum) - CorrectedValue;
+		Sum = NewSum;
+	}
+
+	Fit_Data->Fitted_Value = Sum / (float)Data_Count;
+	return 1U;
 }
 
 
