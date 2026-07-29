@@ -2037,6 +2037,7 @@ Section Cross References
     my_math.o(.text.Math_Feedback_FFTAndExtractPhase) refers to complexmathfunctions.o(.text.arm_cmplx_mag_f32) for arm_cmplx_mag_f32
     my_math.o(.text.Math_Feedback_FFTAndExtractPhase) refers to my_math.o(.text.Math_AnalyzeSpectrum) for Math_AnalyzeSpectrum
     my_math.o(.ARM.exidx.text.Math_Feedback_FFTAndExtractPhase) refers to my_math.o(.text.Math_Feedback_FFTAndExtractPhase) for [Anonymous Symbol]
+    my_math.o(.ARM.exidx.text.Math_FitConstantValue) refers to my_math.o(.text.Math_FitConstantValue) for [Anonymous Symbol]
     my_math.o(.ARM.exidx.text.Math_SpectrumAmpToUpp) refers to my_math.o(.text.Math_SpectrumAmpToUpp) for [Anonymous Symbol]
     command.o(.text.USART3_CommandRx_Init) refers to command.o(.bss.CommandRxBuffer) for CommandRxBuffer
     command.o(.text.USART3_CommandRx_Init) refers to rt_memclr.o(.text) for __aeabi_memclr
@@ -2145,6 +2146,18 @@ Section Cross References
     justfloat.o(.text.VOFA_JustFloat_Send10) refers to usart.o(.bss.huart3) for huart3
     justfloat.o(.text.VOFA_JustFloat_Send10) refers to stm32h7xx_hal_uart.o(.text.HAL_UART_Transmit) for HAL_UART_Transmit
     justfloat.o(.ARM.exidx.text.VOFA_JustFloat_Send10) refers to justfloat.o(.text.VOFA_JustFloat_Send10) for [Anonymous Symbol]
+    my_fft.o(.text.MyFFT_Init) refers to my_fft.o(.text.MyFFT_IsValidSize) for MyFFT_IsValidSize
+    my_fft.o(.ARM.exidx.text.MyFFT_Init) refers to my_fft.o(.text.MyFFT_Init) for [Anonymous Symbol]
+    my_fft.o(.ARM.exidx.text.MyFFT_IsValidSize) refers to my_fft.o(.text.MyFFT_IsValidSize) for [Anonymous Symbol]
+    my_fft.o(.text.MyFFT_ForwardRealF32) refers to my_fft.o(.text.MyFFT_IsValidSize) for MyFFT_IsValidSize
+    my_fft.o(.text.MyFFT_ForwardRealF32) refers to my_fft.o(.text.MyFFT_BitReverse) for MyFFT_BitReverse
+    my_fft.o(.text.MyFFT_ForwardRealF32) refers to my_fft.o(.text.MyFFT_ExecuteButterflies) for MyFFT_ExecuteButterflies
+    my_fft.o(.ARM.exidx.text.MyFFT_ForwardRealF32) refers to my_fft.o(.text.MyFFT_ForwardRealF32) for [Anonymous Symbol]
+    my_fft.o(.ARM.exidx.text.MyFFT_BitReverse) refers to my_fft.o(.text.MyFFT_BitReverse) for [Anonymous Symbol]
+    my_fft.o(.text.MyFFT_ExecuteButterflies) refers to cosf.o(i.__hardfp_cosf) for __hardfp_cosf
+    my_fft.o(.text.MyFFT_ExecuteButterflies) refers to sinf.o(i.__hardfp_sinf) for __hardfp_sinf
+    my_fft.o(.text.MyFFT_ExecuteButterflies) refers to sqrtf.o(i.__hardfp_sqrtf) for __hardfp_sqrtf
+    my_fft.o(.ARM.exidx.text.MyFFT_ExecuteButterflies) refers to my_fft.o(.text.MyFFT_ExecuteButterflies) for [Anonymous Symbol]
     basicmathfunctions.o(.ARM.exidx.text.arm_abs_f32) refers to basicmathfunctions.o(.text.arm_abs_f32) for [Anonymous Symbol]
     basicmathfunctions.o(.ARM.exidx.text.arm_abs_f64) refers to basicmathfunctions.o(.text.arm_abs_f64) for [Anonymous Symbol]
     basicmathfunctions.o(.ARM.exidx.text.arm_abs_q15) refers to basicmathfunctions.o(.text.arm_abs_q15) for [Anonymous Symbol]
@@ -3971,6 +3984,17 @@ Section Cross References
     powf.o(i.powf) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
     powf.o(i.powf) refers to powf.o(i.__hardfp_powf) for __hardfp_powf
     powf.o(.constdata) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
+    sinf.o(i.__hardfp_sinf) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
+    sinf.o(i.__hardfp_sinf) refers to rredf.o(i.__mathlib_rredf2) for __mathlib_rredf2
+    sinf.o(i.__hardfp_sinf) refers to fpclassifyf.o(i.__ARM_fpclassifyf) for __ARM_fpclassifyf
+    sinf.o(i.__hardfp_sinf) refers to funder.o(i.__mathlib_flt_underflow) for __mathlib_flt_underflow
+    sinf.o(i.__hardfp_sinf) refers to _rserrno.o(.text) for __set_errno
+    sinf.o(i.__hardfp_sinf) refers to funder.o(i.__mathlib_flt_invalid) for __mathlib_flt_invalid
+    sinf.o(i.__hardfp_sinf) refers to funder.o(i.__mathlib_flt_infnan) for __mathlib_flt_infnan
+    sinf.o(i.__softfp_sinf) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
+    sinf.o(i.__softfp_sinf) refers to sinf.o(i.__hardfp_sinf) for __hardfp_sinf
+    sinf.o(i.sinf) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
+    sinf.o(i.sinf) refers to sinf.o(i.__hardfp_sinf) for __hardfp_sinf
     sqrt.o(i.__hardfp_sqrt) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
     sqrt.o(i.__hardfp_sqrt) refers to _rserrno.o(.text) for __set_errno
     sqrt.o(i.__softfp_sqrt) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
@@ -6070,6 +6094,8 @@ Removing Unused input sections from the image.
     Removing my_math.o(.ARM.exidx.text.Math_Feedback_SeparateChannel), (8 bytes).
     Removing my_math.o(.text.Math_Feedback_FFTAndExtractPhase), (328 bytes).
     Removing my_math.o(.ARM.exidx.text.Math_Feedback_FFTAndExtractPhase), (8 bytes).
+    Removing my_math.o(.text.Math_FitConstantValue), (188 bytes).
+    Removing my_math.o(.ARM.exidx.text.Math_FitConstantValue), (8 bytes).
     Removing my_math.o(.ARM.exidx.text.Math_SpectrumAmpToUpp), (8 bytes).
     Removing command.o(.text), (0 bytes).
     Removing command.o(.ARM.exidx.text.USART3_CommandRx_Init), (8 bytes).
@@ -6113,6 +6139,16 @@ Removing Unused input sections from the image.
     Removing justfloat.o(.text.VOFA_JustFloat_Send10), (140 bytes).
     Removing justfloat.o(.ARM.exidx.text.VOFA_JustFloat_Send10), (8 bytes).
     Removing my_fft.o(.text), (0 bytes).
+    Removing my_fft.o(.text.MyFFT_Init), (68 bytes).
+    Removing my_fft.o(.ARM.exidx.text.MyFFT_Init), (8 bytes).
+    Removing my_fft.o(.text.MyFFT_IsValidSize), (58 bytes).
+    Removing my_fft.o(.ARM.exidx.text.MyFFT_IsValidSize), (8 bytes).
+    Removing my_fft.o(.text.MyFFT_ForwardRealF32), (258 bytes).
+    Removing my_fft.o(.ARM.exidx.text.MyFFT_ForwardRealF32), (8 bytes).
+    Removing my_fft.o(.text.MyFFT_BitReverse), (182 bytes).
+    Removing my_fft.o(.ARM.exidx.text.MyFFT_BitReverse), (8 bytes).
+    Removing my_fft.o(.text.MyFFT_ExecuteButterflies), (552 bytes).
+    Removing my_fft.o(.ARM.exidx.text.MyFFT_ExecuteButterflies), (8 bytes).
     Removing basicmathfunctions.o(.text), (0 bytes).
     Removing basicmathfunctions.o(.text.arm_abs_f32), (56 bytes).
     Removing basicmathfunctions.o(.ARM.exidx.text.arm_abs_f32), (8 bytes).
@@ -7917,7 +7953,7 @@ Removing Unused input sections from the image.
     Removing windowfunctions.o(.text.arm_hft248d_f64), (544 bytes).
     Removing windowfunctions.o(.ARM.exidx.text.arm_hft248d_f64), (8 bytes).
 
-3441 unused section(s) (total 935706 bytes) removed from the image.
+3453 unused section(s) (total 937060 bytes) removed from the image.
 
 ==============================================================================
 
@@ -8141,6 +8177,7 @@ Image Symbol Table
     ../mathlib/rred.c                        0x00000000   Number         0  rred.o ABSOLUTE
     ../mathlib/rredf.c                       0x00000000   Number         0  rredf.o ABSOLUTE
     ../mathlib/sin_i.c                       0x00000000   Number         0  sin_i.o ABSOLUTE
+    ../mathlib/sinf.c                        0x00000000   Number         0  sinf.o ABSOLUTE
     ../mathlib/sqrt.c                        0x00000000   Number         0  sqrt.o ABSOLUTE
     ../mathlib/sqrtf.c                       0x00000000   Number         0  sqrtf.o ABSOLUTE
     ../mathlib/tanhf.c                       0x00000000   Number         0  tanhf.o ABSOLUTE
@@ -9343,155 +9380,155 @@ Memory Map of the image
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08000000   0x08000000   0x00000298   Data   RO            3    RESET               startup_stm32h743xx.o
-    0x08000298   0x08000298   0x00000008   Code   RO         4145  * !!!main             c_w.l(__main.o)
-    0x080002a0   0x080002a0   0x0000005c   Code   RO         4781    !!!scatter          c_w.l(__scatter.o)
-    0x080002fc   0x080002fc   0x0000001a   Code   RO         4785    !!handler_copy      c_w.l(__scatter_copy.o)
+    0x08000298   0x08000298   0x00000008   Code   RO         4163  * !!!main             c_w.l(__main.o)
+    0x080002a0   0x080002a0   0x0000005c   Code   RO         4805    !!!scatter          c_w.l(__scatter.o)
+    0x080002fc   0x080002fc   0x0000001a   Code   RO         4809    !!handler_copy      c_w.l(__scatter_copy.o)
     0x08000316   0x08000316   0x00000002   PAD
-    0x08000318   0x08000318   0x00000002   Code   RO         4782    !!handler_null      c_w.l(__scatter.o)
+    0x08000318   0x08000318   0x00000002   Code   RO         4806    !!handler_null      c_w.l(__scatter.o)
     0x0800031a   0x0800031a   0x00000002   PAD
-    0x0800031c   0x0800031c   0x0000001c   Code   RO         4787    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x08000338   0x08000338   0x00000000   Code   RO         4312    .ARM.Collect$$_printf_percent$$00000000  c_w.l(_printf_percent.o)
-    0x08000338   0x08000338   0x00000006   Code   RO         4301    .ARM.Collect$$_printf_percent$$00000001  c_w.l(_printf_n.o)
-    0x0800033e   0x0800033e   0x00000006   Code   RO         4303    .ARM.Collect$$_printf_percent$$00000002  c_w.l(_printf_p.o)
-    0x08000344   0x08000344   0x00000006   Code   RO         4308    .ARM.Collect$$_printf_percent$$00000003  c_w.l(_printf_f.o)
-    0x0800034a   0x0800034a   0x00000006   Code   RO         4309    .ARM.Collect$$_printf_percent$$00000004  c_w.l(_printf_e.o)
-    0x08000350   0x08000350   0x00000006   Code   RO         4310    .ARM.Collect$$_printf_percent$$00000005  c_w.l(_printf_g.o)
-    0x08000356   0x08000356   0x00000006   Code   RO         4311    .ARM.Collect$$_printf_percent$$00000006  c_w.l(_printf_a.o)
-    0x0800035c   0x0800035c   0x0000000a   Code   RO         4316    .ARM.Collect$$_printf_percent$$00000007  c_w.l(_printf_ll.o)
-    0x08000366   0x08000366   0x00000006   Code   RO         4305    .ARM.Collect$$_printf_percent$$00000008  c_w.l(_printf_i.o)
-    0x0800036c   0x0800036c   0x00000006   Code   RO         4306    .ARM.Collect$$_printf_percent$$00000009  c_w.l(_printf_d.o)
-    0x08000372   0x08000372   0x00000006   Code   RO         4307    .ARM.Collect$$_printf_percent$$0000000A  c_w.l(_printf_u.o)
-    0x08000378   0x08000378   0x00000006   Code   RO         4304    .ARM.Collect$$_printf_percent$$0000000B  c_w.l(_printf_o.o)
-    0x0800037e   0x0800037e   0x00000006   Code   RO         4302    .ARM.Collect$$_printf_percent$$0000000C  c_w.l(_printf_x.o)
-    0x08000384   0x08000384   0x00000006   Code   RO         4313    .ARM.Collect$$_printf_percent$$0000000D  c_w.l(_printf_lli.o)
-    0x0800038a   0x0800038a   0x00000006   Code   RO         4314    .ARM.Collect$$_printf_percent$$0000000E  c_w.l(_printf_lld.o)
-    0x08000390   0x08000390   0x00000006   Code   RO         4315    .ARM.Collect$$_printf_percent$$0000000F  c_w.l(_printf_llu.o)
-    0x08000396   0x08000396   0x00000006   Code   RO         4320    .ARM.Collect$$_printf_percent$$00000010  c_w.l(_printf_llo.o)
-    0x0800039c   0x0800039c   0x00000006   Code   RO         4321    .ARM.Collect$$_printf_percent$$00000011  c_w.l(_printf_llx.o)
-    0x080003a2   0x080003a2   0x0000000a   Code   RO         4317    .ARM.Collect$$_printf_percent$$00000012  c_w.l(_printf_l.o)
-    0x080003ac   0x080003ac   0x00000006   Code   RO         4299    .ARM.Collect$$_printf_percent$$00000013  c_w.l(_printf_c.o)
-    0x080003b2   0x080003b2   0x00000006   Code   RO         4300    .ARM.Collect$$_printf_percent$$00000014  c_w.l(_printf_s.o)
-    0x080003b8   0x080003b8   0x00000006   Code   RO         4318    .ARM.Collect$$_printf_percent$$00000015  c_w.l(_printf_lc.o)
-    0x080003be   0x080003be   0x00000006   Code   RO         4319    .ARM.Collect$$_printf_percent$$00000016  c_w.l(_printf_ls.o)
-    0x080003c4   0x080003c4   0x00000004   Code   RO         4431    .ARM.Collect$$_printf_percent$$00000017  c_w.l(_printf_percent_end.o)
-    0x080003c8   0x080003c8   0x00000002   Code   RO         4581    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x080003ca   0x080003ca   0x00000004   Code   RO         4582    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
-    0x080003ce   0x080003ce   0x00000000   Code   RO         4585    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x080003ce   0x080003ce   0x00000000   Code   RO         4587    .ARM.Collect$$libinit$$00000006  c_w.l(libinit2.o)
-    0x080003ce   0x080003ce   0x00000008   Code   RO         4588    .ARM.Collect$$libinit$$00000007  c_w.l(libinit2.o)
-    0x080003d6   0x080003d6   0x00000000   Code   RO         4590    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x080003d6   0x080003d6   0x00000000   Code   RO         4592    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x080003d6   0x080003d6   0x00000000   Code   RO         4594    .ARM.Collect$$libinit$$00000010  c_w.l(libinit2.o)
-    0x080003d6   0x080003d6   0x00000006   Code   RO         4595    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
-    0x080003dc   0x080003dc   0x00000000   Code   RO         4597    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x080003dc   0x080003dc   0x0000000c   Code   RO         4598    .ARM.Collect$$libinit$$00000014  c_w.l(libinit2.o)
-    0x080003e8   0x080003e8   0x00000000   Code   RO         4599    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x080003e8   0x080003e8   0x00000000   Code   RO         4601    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x080003e8   0x080003e8   0x0000000a   Code   RO         4602    .ARM.Collect$$libinit$$00000018  c_w.l(libinit2.o)
-    0x080003f2   0x080003f2   0x00000000   Code   RO         4603    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x080003f2   0x080003f2   0x00000000   Code   RO         4605    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x080003f2   0x080003f2   0x00000000   Code   RO         4607    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x080003f2   0x080003f2   0x00000000   Code   RO         4609    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x080003f2   0x080003f2   0x00000000   Code   RO         4611    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x080003f2   0x080003f2   0x00000000   Code   RO         4613    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x080003f2   0x080003f2   0x00000000   Code   RO         4615    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x080003f2   0x080003f2   0x00000004   Code   RO         4616    .ARM.Collect$$libinit$$00000026  c_w.l(libinit2.o)
-    0x080003f6   0x080003f6   0x00000000   Code   RO         4617    .ARM.Collect$$libinit$$00000027  c_w.l(libinit2.o)
-    0x080003f6   0x080003f6   0x00000000   Code   RO         4621    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x080003f6   0x080003f6   0x00000000   Code   RO         4623    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x080003f6   0x080003f6   0x00000000   Code   RO         4625    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x080003f6   0x080003f6   0x00000000   Code   RO         4627    .ARM.Collect$$libinit$$00000034  c_w.l(libinit2.o)
-    0x080003f6   0x080003f6   0x00000002   Code   RO         4628    .ARM.Collect$$libinit$$00000035  c_w.l(libinit2.o)
-    0x080003f8   0x080003f8   0x00000002   Code   RO         4762    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x080003fa   0x080003fa   0x00000000   Code   RO         4630    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x080003fa   0x080003fa   0x00000004   Code   RO         4631    .ARM.Collect$$libshutdown$$00000003  c_w.l(libshutdown2.o)
-    0x080003fe   0x080003fe   0x00000000   Code   RO         4632    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x080003fe   0x080003fe   0x00000000   Code   RO         4635    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
-    0x080003fe   0x080003fe   0x00000000   Code   RO         4638    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
-    0x080003fe   0x080003fe   0x00000000   Code   RO         4640    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x080003fe   0x080003fe   0x00000000   Code   RO         4643    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x080003fe   0x080003fe   0x00000002   Code   RO         4644    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
-    0x08000400   0x08000400   0x00000000   Code   RO         4226    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x08000400   0x08000400   0x00000000   Code   RO         4393    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x08000400   0x08000400   0x00000006   Code   RO         4405    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x08000406   0x08000406   0x00000000   Code   RO         4395    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x08000406   0x08000406   0x00000004   Code   RO         4396    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x0800040a   0x0800040a   0x00000000   Code   RO         4398    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x0800040a   0x0800040a   0x00000008   Code   RO         4399    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x08000412   0x08000412   0x00000002   Code   RO         4649    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x08000414   0x08000414   0x00000000   Code   RO         4705    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x08000414   0x08000414   0x00000004   Code   RO         4706    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x08000418   0x08000418   0x00000006   Code   RO         4707    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x0800031c   0x0800031c   0x0000001c   Code   RO         4811    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x08000338   0x08000338   0x00000000   Code   RO         4336    .ARM.Collect$$_printf_percent$$00000000  c_w.l(_printf_percent.o)
+    0x08000338   0x08000338   0x00000006   Code   RO         4325    .ARM.Collect$$_printf_percent$$00000001  c_w.l(_printf_n.o)
+    0x0800033e   0x0800033e   0x00000006   Code   RO         4327    .ARM.Collect$$_printf_percent$$00000002  c_w.l(_printf_p.o)
+    0x08000344   0x08000344   0x00000006   Code   RO         4332    .ARM.Collect$$_printf_percent$$00000003  c_w.l(_printf_f.o)
+    0x0800034a   0x0800034a   0x00000006   Code   RO         4333    .ARM.Collect$$_printf_percent$$00000004  c_w.l(_printf_e.o)
+    0x08000350   0x08000350   0x00000006   Code   RO         4334    .ARM.Collect$$_printf_percent$$00000005  c_w.l(_printf_g.o)
+    0x08000356   0x08000356   0x00000006   Code   RO         4335    .ARM.Collect$$_printf_percent$$00000006  c_w.l(_printf_a.o)
+    0x0800035c   0x0800035c   0x0000000a   Code   RO         4340    .ARM.Collect$$_printf_percent$$00000007  c_w.l(_printf_ll.o)
+    0x08000366   0x08000366   0x00000006   Code   RO         4329    .ARM.Collect$$_printf_percent$$00000008  c_w.l(_printf_i.o)
+    0x0800036c   0x0800036c   0x00000006   Code   RO         4330    .ARM.Collect$$_printf_percent$$00000009  c_w.l(_printf_d.o)
+    0x08000372   0x08000372   0x00000006   Code   RO         4331    .ARM.Collect$$_printf_percent$$0000000A  c_w.l(_printf_u.o)
+    0x08000378   0x08000378   0x00000006   Code   RO         4328    .ARM.Collect$$_printf_percent$$0000000B  c_w.l(_printf_o.o)
+    0x0800037e   0x0800037e   0x00000006   Code   RO         4326    .ARM.Collect$$_printf_percent$$0000000C  c_w.l(_printf_x.o)
+    0x08000384   0x08000384   0x00000006   Code   RO         4337    .ARM.Collect$$_printf_percent$$0000000D  c_w.l(_printf_lli.o)
+    0x0800038a   0x0800038a   0x00000006   Code   RO         4338    .ARM.Collect$$_printf_percent$$0000000E  c_w.l(_printf_lld.o)
+    0x08000390   0x08000390   0x00000006   Code   RO         4339    .ARM.Collect$$_printf_percent$$0000000F  c_w.l(_printf_llu.o)
+    0x08000396   0x08000396   0x00000006   Code   RO         4344    .ARM.Collect$$_printf_percent$$00000010  c_w.l(_printf_llo.o)
+    0x0800039c   0x0800039c   0x00000006   Code   RO         4345    .ARM.Collect$$_printf_percent$$00000011  c_w.l(_printf_llx.o)
+    0x080003a2   0x080003a2   0x0000000a   Code   RO         4341    .ARM.Collect$$_printf_percent$$00000012  c_w.l(_printf_l.o)
+    0x080003ac   0x080003ac   0x00000006   Code   RO         4323    .ARM.Collect$$_printf_percent$$00000013  c_w.l(_printf_c.o)
+    0x080003b2   0x080003b2   0x00000006   Code   RO         4324    .ARM.Collect$$_printf_percent$$00000014  c_w.l(_printf_s.o)
+    0x080003b8   0x080003b8   0x00000006   Code   RO         4342    .ARM.Collect$$_printf_percent$$00000015  c_w.l(_printf_lc.o)
+    0x080003be   0x080003be   0x00000006   Code   RO         4343    .ARM.Collect$$_printf_percent$$00000016  c_w.l(_printf_ls.o)
+    0x080003c4   0x080003c4   0x00000004   Code   RO         4455    .ARM.Collect$$_printf_percent$$00000017  c_w.l(_printf_percent_end.o)
+    0x080003c8   0x080003c8   0x00000002   Code   RO         4605    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x080003ca   0x080003ca   0x00000004   Code   RO         4606    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
+    0x080003ce   0x080003ce   0x00000000   Code   RO         4609    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x080003ce   0x080003ce   0x00000000   Code   RO         4611    .ARM.Collect$$libinit$$00000006  c_w.l(libinit2.o)
+    0x080003ce   0x080003ce   0x00000008   Code   RO         4612    .ARM.Collect$$libinit$$00000007  c_w.l(libinit2.o)
+    0x080003d6   0x080003d6   0x00000000   Code   RO         4614    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x080003d6   0x080003d6   0x00000000   Code   RO         4616    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x080003d6   0x080003d6   0x00000000   Code   RO         4618    .ARM.Collect$$libinit$$00000010  c_w.l(libinit2.o)
+    0x080003d6   0x080003d6   0x00000006   Code   RO         4619    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x080003dc   0x080003dc   0x00000000   Code   RO         4621    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x080003dc   0x080003dc   0x0000000c   Code   RO         4622    .ARM.Collect$$libinit$$00000014  c_w.l(libinit2.o)
+    0x080003e8   0x080003e8   0x00000000   Code   RO         4623    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x080003e8   0x080003e8   0x00000000   Code   RO         4625    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x080003e8   0x080003e8   0x0000000a   Code   RO         4626    .ARM.Collect$$libinit$$00000018  c_w.l(libinit2.o)
+    0x080003f2   0x080003f2   0x00000000   Code   RO         4627    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x080003f2   0x080003f2   0x00000000   Code   RO         4629    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x080003f2   0x080003f2   0x00000000   Code   RO         4631    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x080003f2   0x080003f2   0x00000000   Code   RO         4633    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x080003f2   0x080003f2   0x00000000   Code   RO         4635    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x080003f2   0x080003f2   0x00000000   Code   RO         4637    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x080003f2   0x080003f2   0x00000000   Code   RO         4639    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x080003f2   0x080003f2   0x00000004   Code   RO         4640    .ARM.Collect$$libinit$$00000026  c_w.l(libinit2.o)
+    0x080003f6   0x080003f6   0x00000000   Code   RO         4641    .ARM.Collect$$libinit$$00000027  c_w.l(libinit2.o)
+    0x080003f6   0x080003f6   0x00000000   Code   RO         4645    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x080003f6   0x080003f6   0x00000000   Code   RO         4647    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x080003f6   0x080003f6   0x00000000   Code   RO         4649    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x080003f6   0x080003f6   0x00000000   Code   RO         4651    .ARM.Collect$$libinit$$00000034  c_w.l(libinit2.o)
+    0x080003f6   0x080003f6   0x00000002   Code   RO         4652    .ARM.Collect$$libinit$$00000035  c_w.l(libinit2.o)
+    0x080003f8   0x080003f8   0x00000002   Code   RO         4786    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x080003fa   0x080003fa   0x00000000   Code   RO         4654    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x080003fa   0x080003fa   0x00000004   Code   RO         4655    .ARM.Collect$$libshutdown$$00000003  c_w.l(libshutdown2.o)
+    0x080003fe   0x080003fe   0x00000000   Code   RO         4656    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x080003fe   0x080003fe   0x00000000   Code   RO         4659    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
+    0x080003fe   0x080003fe   0x00000000   Code   RO         4662    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
+    0x080003fe   0x080003fe   0x00000000   Code   RO         4664    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x080003fe   0x080003fe   0x00000000   Code   RO         4667    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x080003fe   0x080003fe   0x00000002   Code   RO         4668    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
+    0x08000400   0x08000400   0x00000000   Code   RO         4250    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x08000400   0x08000400   0x00000000   Code   RO         4417    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x08000400   0x08000400   0x00000006   Code   RO         4429    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x08000406   0x08000406   0x00000000   Code   RO         4419    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x08000406   0x08000406   0x00000004   Code   RO         4420    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x0800040a   0x0800040a   0x00000000   Code   RO         4422    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x0800040a   0x0800040a   0x00000008   Code   RO         4423    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x08000412   0x08000412   0x00000002   Code   RO         4673    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x08000414   0x08000414   0x00000000   Code   RO         4729    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x08000414   0x08000414   0x00000004   Code   RO         4730    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x08000418   0x08000418   0x00000006   Code   RO         4731    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x0800041e   0x0800041e   0x00000002   PAD
     0x08000420   0x08000420   0x00000048   Code   RO            4    .text               startup_stm32h743xx.o
-    0x08000468   0x08000468   0x000000f0   Code   RO         4127    .text               c_w.l(lludivv7m.o)
-    0x08000558   0x08000558   0x00000018   Code   RO         4131    .text               c_w.l(printf.o)
-    0x08000570   0x08000570   0x00000044   Code   RO         4137    .text               c_w.l(rt_memclr.o)
-    0x080005b4   0x080005b4   0x0000004e   Code   RO         4139    .text               c_w.l(rt_memclr_w.o)
+    0x08000468   0x08000468   0x000000f0   Code   RO         4145    .text               c_w.l(lludivv7m.o)
+    0x08000558   0x08000558   0x00000018   Code   RO         4149    .text               c_w.l(printf.o)
+    0x08000570   0x08000570   0x00000044   Code   RO         4155    .text               c_w.l(rt_memclr.o)
+    0x080005b4   0x080005b4   0x0000004e   Code   RO         4157    .text               c_w.l(rt_memclr_w.o)
     0x08000602   0x08000602   0x00000006   PAD
-    0x08000608   0x08000608   0x0000007c   Code   RO         4141    .text               c_w.l(strcmpv7m_pel.o)
-    0x08000684   0x08000684   0x00000006   Code   RO         4143    .text               c_w.l(heapauxi.o)
-    0x0800068a   0x0800068a   0x00000016   Code   RO         4231    .text               c_w.l(_rserrno.o)
-    0x080006a0   0x080006a0   0x0000004e   Code   RO         4235    .text               c_w.l(_printf_pad.o)
-    0x080006ee   0x080006ee   0x00000024   Code   RO         4237    .text               c_w.l(_printf_truncate.o)
-    0x08000712   0x08000712   0x00000052   Code   RO         4239    .text               c_w.l(_printf_str.o)
-    0x08000764   0x08000764   0x00000078   Code   RO         4241    .text               c_w.l(_printf_dec.o)
-    0x080007dc   0x080007dc   0x00000028   Code   RO         4243    .text               c_w.l(_printf_charcount.o)
-    0x08000804   0x08000804   0x00000024   Code   RO         4245    .text               c_w.l(_printf_char_file.o)
-    0x08000828   0x08000828   0x000000bc   Code   RO         4247    .text               c_w.l(_printf_wctomb.o)
-    0x080008e4   0x080008e4   0x0000007c   Code   RO         4250    .text               c_w.l(_printf_longlong_dec.o)
-    0x08000960   0x08000960   0x00000070   Code   RO         4256    .text               c_w.l(_printf_oct_int_ll.o)
-    0x080009d0   0x080009d0   0x00000094   Code   RO         4276    .text               c_w.l(_printf_hex_int_ll_ptr.o)
-    0x08000a64   0x08000a64   0x00000188   Code   RO         4296    .text               c_w.l(__printf_flags_ss_wp.o)
-    0x08000bec   0x08000bec   0x00000008   Code   RO         4412    .text               c_w.l(rt_errno_addr_intlibspace.o)
-    0x08000bf4   0x08000bf4   0x0000008a   Code   RO         4414    .text               c_w.l(lludiv10.o)
-    0x08000c7e   0x08000c7e   0x000000b2   Code   RO         4416    .text               c_w.l(_printf_intcommon.o)
-    0x08000d30   0x08000d30   0x0000041c   Code   RO         4418    .text               c_w.l(_printf_fp_dec.o)
-    0x0800114c   0x0800114c   0x000002fc   Code   RO         4422    .text               c_w.l(_printf_fp_hex.o)
-    0x08001448   0x08001448   0x00000030   Code   RO         4425    .text               c_w.l(_printf_char_common.o)
-    0x08001478   0x08001478   0x0000002c   Code   RO         4427    .text               c_w.l(_printf_char.o)
-    0x080014a4   0x080014a4   0x0000002c   Code   RO         4429    .text               c_w.l(_printf_wchar.o)
-    0x080014d0   0x080014d0   0x00000008   Code   RO         4432    .text               c_w.l(ferror.o)
-    0x080014d8   0x080014d8   0x00000138   Code   RO         4434    .text               c_w.l(initio.o)
-    0x08001610   0x08001610   0x00000048   Code   RO         4440    .text               c_w.l(_c16rtomb.o)
-    0x08001658   0x08001658   0x00000008   Code   RO         4451    .text               c_w.l(libspace.o)
-    0x08001660   0x08001660   0x0000004a   Code   RO         4456    .text               c_w.l(sys_stackheap_outer.o)
+    0x08000608   0x08000608   0x0000007c   Code   RO         4159    .text               c_w.l(strcmpv7m_pel.o)
+    0x08000684   0x08000684   0x00000006   Code   RO         4161    .text               c_w.l(heapauxi.o)
+    0x0800068a   0x0800068a   0x00000016   Code   RO         4255    .text               c_w.l(_rserrno.o)
+    0x080006a0   0x080006a0   0x0000004e   Code   RO         4259    .text               c_w.l(_printf_pad.o)
+    0x080006ee   0x080006ee   0x00000024   Code   RO         4261    .text               c_w.l(_printf_truncate.o)
+    0x08000712   0x08000712   0x00000052   Code   RO         4263    .text               c_w.l(_printf_str.o)
+    0x08000764   0x08000764   0x00000078   Code   RO         4265    .text               c_w.l(_printf_dec.o)
+    0x080007dc   0x080007dc   0x00000028   Code   RO         4267    .text               c_w.l(_printf_charcount.o)
+    0x08000804   0x08000804   0x00000024   Code   RO         4269    .text               c_w.l(_printf_char_file.o)
+    0x08000828   0x08000828   0x000000bc   Code   RO         4271    .text               c_w.l(_printf_wctomb.o)
+    0x080008e4   0x080008e4   0x0000007c   Code   RO         4274    .text               c_w.l(_printf_longlong_dec.o)
+    0x08000960   0x08000960   0x00000070   Code   RO         4280    .text               c_w.l(_printf_oct_int_ll.o)
+    0x080009d0   0x080009d0   0x00000094   Code   RO         4300    .text               c_w.l(_printf_hex_int_ll_ptr.o)
+    0x08000a64   0x08000a64   0x00000188   Code   RO         4320    .text               c_w.l(__printf_flags_ss_wp.o)
+    0x08000bec   0x08000bec   0x00000008   Code   RO         4436    .text               c_w.l(rt_errno_addr_intlibspace.o)
+    0x08000bf4   0x08000bf4   0x0000008a   Code   RO         4438    .text               c_w.l(lludiv10.o)
+    0x08000c7e   0x08000c7e   0x000000b2   Code   RO         4440    .text               c_w.l(_printf_intcommon.o)
+    0x08000d30   0x08000d30   0x0000041c   Code   RO         4442    .text               c_w.l(_printf_fp_dec.o)
+    0x0800114c   0x0800114c   0x000002fc   Code   RO         4446    .text               c_w.l(_printf_fp_hex.o)
+    0x08001448   0x08001448   0x00000030   Code   RO         4449    .text               c_w.l(_printf_char_common.o)
+    0x08001478   0x08001478   0x0000002c   Code   RO         4451    .text               c_w.l(_printf_char.o)
+    0x080014a4   0x080014a4   0x0000002c   Code   RO         4453    .text               c_w.l(_printf_wchar.o)
+    0x080014d0   0x080014d0   0x00000008   Code   RO         4456    .text               c_w.l(ferror.o)
+    0x080014d8   0x080014d8   0x00000138   Code   RO         4458    .text               c_w.l(initio.o)
+    0x08001610   0x08001610   0x00000048   Code   RO         4464    .text               c_w.l(_c16rtomb.o)
+    0x08001658   0x08001658   0x00000008   Code   RO         4475    .text               c_w.l(libspace.o)
+    0x08001660   0x08001660   0x0000004a   Code   RO         4480    .text               c_w.l(sys_stackheap_outer.o)
     0x080016aa   0x080016aa   0x00000002   PAD
-    0x080016ac   0x080016ac   0x00000010   Code   RO         4458    .text               c_w.l(rt_ctype_table.o)
-    0x080016bc   0x080016bc   0x00000008   Code   RO         4463    .text               c_w.l(rt_locale_intlibspace.o)
-    0x080016c4   0x080016c4   0x0000004e   Code   RO         4467    .text               c_w.l(h1_free.o)
+    0x080016ac   0x080016ac   0x00000010   Code   RO         4482    .text               c_w.l(rt_ctype_table.o)
+    0x080016bc   0x080016bc   0x00000008   Code   RO         4487    .text               c_w.l(rt_locale_intlibspace.o)
+    0x080016c4   0x080016c4   0x0000004e   Code   RO         4491    .text               c_w.l(h1_free.o)
     0x08001712   0x08001712   0x00000002   PAD
-    0x08001714   0x08001714   0x00000080   Code   RO         4521    .text               c_w.l(_printf_fp_infnan.o)
-    0x08001794   0x08001794   0x000000e4   Code   RO         4525    .text               c_w.l(bigflt0.o)
-    0x08001878   0x08001878   0x00000046   Code   RO         4552    .text               c_w.l(setvbuf.o)
+    0x08001714   0x08001714   0x00000080   Code   RO         4545    .text               c_w.l(_printf_fp_infnan.o)
+    0x08001794   0x08001794   0x000000e4   Code   RO         4549    .text               c_w.l(bigflt0.o)
+    0x08001878   0x08001878   0x00000046   Code   RO         4576    .text               c_w.l(setvbuf.o)
     0x080018be   0x080018be   0x00000002   PAD
-    0x080018c0   0x080018c0   0x000000f0   Code   RO         4555    .text               c_w.l(fopen.o)
-    0x080019b0   0x080019b0   0x0000004c   Code   RO         4557    .text               c_w.l(fclose.o)
-    0x080019fc   0x080019fc   0x00000012   Code   RO         4566    .text               c_w.l(exit.o)
-    0x08001a0e   0x08001a0e   0x0000000e   Code   RO         4572    .text               c_w.l(defsig_rtred_outer.o)
-    0x08001a1c   0x08001a1c   0x00000066   Code   RO         4645    .text               c_w.l(sys_io.o)
+    0x080018c0   0x080018c0   0x000000f0   Code   RO         4579    .text               c_w.l(fopen.o)
+    0x080019b0   0x080019b0   0x0000004c   Code   RO         4581    .text               c_w.l(fclose.o)
+    0x080019fc   0x080019fc   0x00000012   Code   RO         4590    .text               c_w.l(exit.o)
+    0x08001a0e   0x08001a0e   0x0000000e   Code   RO         4596    .text               c_w.l(defsig_rtred_outer.o)
+    0x08001a1c   0x08001a1c   0x00000066   Code   RO         4669    .text               c_w.l(sys_io.o)
     0x08001a82   0x08001a82   0x00000002   PAD
-    0x08001a84   0x08001a84   0x00000008   Code   RO         4656    .text               c_w.l(rt_heap_descriptor_intlibspace.o)
-    0x08001a8c   0x08001a8c   0x00000004   Code   RO         4658    .text               c_w.l(hguard.o)
-    0x08001a90   0x08001a90   0x0000008a   Code   RO         4660    .text               c_w.l(init_alloc.o)
-    0x08001b1a   0x08001b1a   0x0000005e   Code   RO         4666    .text               c_w.l(h1_alloc.o)
-    0x08001b78   0x08001b78   0x000000f8   Code   RO         4680    .text               c_w.l(fseek.o)
-    0x08001c70   0x08001c70   0x00000108   Code   RO         4682    .text               c_w.l(stdio.o)
-    0x08001d78   0x08001d78   0x0000000a   Code   RO         4687    .text               c_w.l(defsig_exit.o)
+    0x08001a84   0x08001a84   0x00000008   Code   RO         4680    .text               c_w.l(rt_heap_descriptor_intlibspace.o)
+    0x08001a8c   0x08001a8c   0x00000004   Code   RO         4682    .text               c_w.l(hguard.o)
+    0x08001a90   0x08001a90   0x0000008a   Code   RO         4684    .text               c_w.l(init_alloc.o)
+    0x08001b1a   0x08001b1a   0x0000005e   Code   RO         4690    .text               c_w.l(h1_alloc.o)
+    0x08001b78   0x08001b78   0x000000f8   Code   RO         4704    .text               c_w.l(fseek.o)
+    0x08001c70   0x08001c70   0x00000108   Code   RO         4706    .text               c_w.l(stdio.o)
+    0x08001d78   0x08001d78   0x0000000a   Code   RO         4711    .text               c_w.l(defsig_exit.o)
     0x08001d82   0x08001d82   0x00000002   PAD
-    0x08001d84   0x08001d84   0x00000034   Code   RO         4691    .text               c_w.l(defsig_rtred_inner.o)
-    0x08001db8   0x08001db8   0x0000000c   Code   RO         4697    .text               c_w.l(sys_exit.o)
-    0x08001dc4   0x08001dc4   0x00000002   Code   RO         4701    .text               c_w.l(use_no_semi.o)
-    0x08001dc6   0x08001dc6   0x00000000   Code   RO         4703    .text               c_w.l(indicate_semi.o)
-    0x08001dc6   0x08001dc6   0x00000000   Code   RO         4711    .text               c_w.l(maybetermalloc1.o)
-    0x08001dc6   0x08001dc6   0x0000000c   Code   RO         4713    .text               c_w.l(h1_init.o)
-    0x08001dd2   0x08001dd2   0x00000034   Code   RO         4715    .text               c_w.l(h1_extend.o)
-    0x08001e06   0x08001e06   0x00000042   Code   RO         4723    .text               c_w.l(ftell.o)
-    0x08001e48   0x08001e48   0x00000032   Code   RO         4727    .text               c_w.l(defsig_general.o)
-    0x08001e7a   0x08001e7a   0x0000000e   Code   RO         4729    .text               c_w.l(defsig_rtmem_outer.o)
-    0x08001e88   0x08001e88   0x0000003e   Code   RO         4733    .text               c_w.l(strlen.o)
-    0x08001ec6   0x08001ec6   0x0000000e   Code   RO         4744    .text               c_w.l(sys_wrch.o)
-    0x08001ed4   0x08001ed4   0x00000050   Code   RO         4756    .text               c_w.l(defsig_rtmem_inner.o)
+    0x08001d84   0x08001d84   0x00000034   Code   RO         4715    .text               c_w.l(defsig_rtred_inner.o)
+    0x08001db8   0x08001db8   0x0000000c   Code   RO         4721    .text               c_w.l(sys_exit.o)
+    0x08001dc4   0x08001dc4   0x00000002   Code   RO         4725    .text               c_w.l(use_no_semi.o)
+    0x08001dc6   0x08001dc6   0x00000000   Code   RO         4727    .text               c_w.l(indicate_semi.o)
+    0x08001dc6   0x08001dc6   0x00000000   Code   RO         4735    .text               c_w.l(maybetermalloc1.o)
+    0x08001dc6   0x08001dc6   0x0000000c   Code   RO         4737    .text               c_w.l(h1_init.o)
+    0x08001dd2   0x08001dd2   0x00000034   Code   RO         4739    .text               c_w.l(h1_extend.o)
+    0x08001e06   0x08001e06   0x00000042   Code   RO         4747    .text               c_w.l(ftell.o)
+    0x08001e48   0x08001e48   0x00000032   Code   RO         4751    .text               c_w.l(defsig_general.o)
+    0x08001e7a   0x08001e7a   0x0000000e   Code   RO         4753    .text               c_w.l(defsig_rtmem_outer.o)
+    0x08001e88   0x08001e88   0x0000003e   Code   RO         4757    .text               c_w.l(strlen.o)
+    0x08001ec6   0x08001ec6   0x0000000e   Code   RO         4768    .text               c_w.l(sys_wrch.o)
+    0x08001ed4   0x08001ed4   0x00000050   Code   RO         4780    .text               c_w.l(defsig_rtmem_inner.o)
     0x08001f24   0x08001f24   0x00000004   PAD
     0x08001f28   0x08001f28   0x00000218   Code   RO          170    .text.ADC_ConfigureBoostMode  stm32h7xx_hal_adc.o
     0x08002140   0x08002140   0x00000192   Code   RO          174    .text.ADC_ConversionStop  stm32h7xx_hal_adc.o
@@ -9508,18 +9545,18 @@ Memory Map of the image
     0x08002608   0x08002608   0x00000010   Code   RO          129    .text.ADC_IRQHandler  stm32h7xx_it.o
     0x08002618   0x08002618   0x00000004   Code   RO          113    .text.BusFault_Handler  stm32h7xx_it.o
     0x0800261c   0x0800261c   0x00000004   PAD
-    0x08002620   0x08002620   0x0000007c   Code   RO         2050    .text.Command_AcquireADC  command.o
+    0x08002620   0x08002620   0x0000007c   Code   RO         2052    .text.Command_AcquireADC  command.o
     0x0800269c   0x0800269c   0x00000004   PAD
-    0x080026a0   0x080026a0   0x0000000e   Code   RO         2040    .text.Command_Clear  command.o
+    0x080026a0   0x080026a0   0x0000000e   Code   RO         2042    .text.Command_Clear  command.o
     0x080026ae   0x080026ae   0x00000002   PAD
-    0x080026b0   0x080026b0   0x00000030   Code   RO         2042    .text.Command_Execute  command.o
-    0x080026e0   0x080026e0   0x00000010   Code   RO         2048    .text.Command_HandleLine  command.o
-    0x080026f0   0x080026f0   0x00000036   Code   RO         2038    .text.Command_Judege  command.o
+    0x080026b0   0x080026b0   0x00000030   Code   RO         2044    .text.Command_Execute  command.o
+    0x080026e0   0x080026e0   0x00000010   Code   RO         2050    .text.Command_HandleLine  command.o
+    0x080026f0   0x080026f0   0x00000036   Code   RO         2040    .text.Command_Judege  command.o
     0x08002726   0x08002726   0x00000002   PAD
-    0x08002728   0x08002728   0x000000d6   Code   RO         2036    .text.Command_ParseReceivedData  command.o
+    0x08002728   0x08002728   0x000000d6   Code   RO         2038    .text.Command_ParseReceivedData  command.o
     0x080027fe   0x080027fe   0x00000002   PAD
-    0x08002800   0x08002800   0x00000130   Code   RO         2044    .text.Command_ProcessQues1  command.o
-    0x08002930   0x08002930   0x00000220   Code   RO         2032    .text.Command_RxStart  command.o
+    0x08002800   0x08002800   0x00000130   Code   RO         2046    .text.Command_ProcessQues1  command.o
+    0x08002930   0x08002930   0x00000220   Code   RO         2034    .text.Command_RxStart  command.o
     0x08002b50   0x08002b50   0x00000010   Code   RO          125    .text.DMA1_Stream0_IRQHandler  stm32h7xx_it.o
     0x08002b60   0x08002b60   0x00000010   Code   RO          127    .text.DMA1_Stream1_IRQHandler  stm32h7xx_it.o
     0x08002b70   0x08002b70   0x000001ca   Code   RO          665    .text.DMA_CalcBaseAndBitshift  stm32h7xx_hal_dma.o
@@ -9546,7 +9583,7 @@ Memory Map of the image
     0x0800397a   0x0800397a   0x00000006   PAD
     0x08003980   0x08003980   0x00000886   Code   RO          228    .text.HAL_ADC_ConfigChannel  stm32h7xx_hal_adc.o
     0x08004206   0x08004206   0x00000002   PAD
-    0x08004208   0x08004208   0x00000026   Code   RO         2070    .text.HAL_ADC_ConvCpltCallback  callback.o
+    0x08004208   0x08004208   0x00000026   Code   RO         2072    .text.HAL_ADC_ConvCpltCallback  callback.o
     0x0800422e   0x0800422e   0x00000002   PAD
     0x08004230   0x08004230   0x00000008   Code   RO          226    .text.HAL_ADC_ConvHalfCpltCallback  stm32h7xx_hal_adc.o
     0x08004238   0x08004238   0x00000008   Code   RO          224    .text.HAL_ADC_ErrorCallback  stm32h7xx_hal_adc.o
@@ -9627,13 +9664,13 @@ Memory Map of the image
     0x0800ca40   0x0800ca40   0x00000250   Code   RO         1555    .text.HAL_TIM_IRQHandler  stm32h7xx_hal_tim.o
     0x0800cc90   0x0800cc90   0x00000008   Code   RO         1559    .text.HAL_TIM_OC_DelayElapsedCallback  stm32h7xx_hal_tim.o
     0x0800cc98   0x0800cc98   0x00000008   Code   RO         1561    .text.HAL_TIM_PWM_PulseFinishedCallback  stm32h7xx_hal_tim.o
-    0x0800cca0   0x0800cca0   0x0000001a   Code   RO         2068    .text.HAL_TIM_PeriodElapsedCallback  callback.o
+    0x0800cca0   0x0800cca0   0x0000001a   Code   RO         2070    .text.HAL_TIM_PeriodElapsedCallback  callback.o
     0x0800ccba   0x0800ccba   0x00000006   PAD
     0x0800ccc0   0x0800ccc0   0x00000008   Code   RO         1565    .text.HAL_TIM_TriggerCallback  stm32h7xx_hal_tim.o
     0x0800ccc8   0x0800ccc8   0x0000007c   Code   RO         1939    .text.HAL_UARTEx_DisableFifoMode  stm32h7xx_hal_uart_ex.o
     0x0800cd44   0x0800cd44   0x00000004   PAD
     0x0800cd48   0x0800cd48   0x000000b0   Code   RO         1949    .text.HAL_UARTEx_ReceiveToIdle_DMA  stm32h7xx_hal_uart_ex.o
-    0x0800cdf8   0x0800cdf8   0x00000028   Code   RO         2072    .text.HAL_UARTEx_RxEventCallback  callback.o
+    0x0800cdf8   0x0800cdf8   0x00000028   Code   RO         2074    .text.HAL_UARTEx_RxEventCallback  callback.o
     0x0800ce20   0x0800ce20   0x00000008   Code   RO         1921    .text.HAL_UARTEx_RxFifoFullCallback  stm32h7xx_hal_uart_ex.o
     0x0800ce28   0x0800ce28   0x0000008c   Code   RO         1943    .text.HAL_UARTEx_SetRxFifoThreshold  stm32h7xx_hal_uart_ex.o
     0x0800ceb4   0x0800ceb4   0x00000004   PAD
@@ -9731,7 +9768,7 @@ Memory Map of the image
     0x0800e942   0x0800e942   0x00000006   PAD
     0x0800e948   0x0800e948   0x0000010c   Code   RO         2004    .text.Math_SetSpectrumComponent  my_math.o
     0x0800ea54   0x0800ea54   0x00000004   PAD
-    0x0800ea58   0x0800ea58   0x0000004a   Code   RO         2020    .text.Math_SpectrumAmpToUpp  my_math.o
+    0x0800ea58   0x0800ea58   0x0000004a   Code   RO         2022    .text.Math_SpectrumAmpToUpp  my_math.o
     0x0800eaa2   0x0800eaa2   0x00000006   PAD
     0x0800eaa8   0x0800eaa8   0x00000004   Code   RO          111    .text.MemManage_Handler  stm32h7xx_it.o
     0x0800eaac   0x0800eaac   0x00000004   PAD
@@ -9789,9 +9826,9 @@ Memory Map of the image
     0x08010896   0x08010896   0x00000002   PAD
     0x08010898   0x08010898   0x0000010c   Code   RO         1791    .text.UART_WaitOnFlagUntilTimeout  stm32h7xx_hal_uart.o
     0x080109a4   0x080109a4   0x00000004   PAD
-    0x080109a8   0x080109a8   0x00000032   Code   RO         2034    .text.USART3_CommandRx_Event  command.o
+    0x080109a8   0x080109a8   0x00000032   Code   RO         2036    .text.USART3_CommandRx_Event  command.o
     0x080109da   0x080109da   0x00000006   PAD
-    0x080109e0   0x080109e0   0x00000030   Code   RO         2030    .text.USART3_CommandRx_Init  command.o
+    0x080109e0   0x080109e0   0x00000030   Code   RO         2032    .text.USART3_CommandRx_Init  command.o
     0x08010a10   0x08010a10   0x00000010   Code   RO          133    .text.USART3_IRQHandler  stm32h7xx_it.o
     0x08010a20   0x08010a20   0x00000004   Code   RO          115    .text.UsageFault_Handler  stm32h7xx_it.o
     0x08010a24   0x08010a24   0x00000004   PAD
@@ -9801,106 +9838,106 @@ Memory Map of the image
     0x08010aaa   0x08010aaa   0x00000006   PAD
     0x08010ab0   0x08010ab0   0x0000003c   Code   RO          907    .text.__NVIC_SetPriorityGrouping  stm32h7xx_hal_cortex.o
     0x08010aec   0x08010aec   0x00000004   PAD
-    0x08010af0   0x08010af0   0x0000001e   Code   RO         2520    .text._sqrtf        complexmathfunctions.o
+    0x08010af0   0x08010af0   0x0000001e   Code   RO         2538    .text._sqrtf        complexmathfunctions.o
     0x08010b0e   0x08010b0e   0x00000002   PAD
-    0x08010b10   0x08010b10   0x0000008e   Code   RO         3605    .text.arm_bitreversal_32  transformfunctions.o
+    0x08010b10   0x08010b10   0x0000008e   Code   RO         3623    .text.arm_bitreversal_32  transformfunctions.o
     0x08010b9e   0x08010b9e   0x00000002   PAD
-    0x08010ba0   0x08010ba0   0x00000156   Code   RO         3609    .text.arm_cfft_f32  transformfunctions.o
+    0x08010ba0   0x08010ba0   0x00000156   Code   RO         3627    .text.arm_cfft_f32  transformfunctions.o
     0x08010cf6   0x08010cf6   0x00000002   PAD
-    0x08010cf8   0x08010cf8   0x00000038   Code   RO         3647    .text.arm_cfft_init_1024_f32  transformfunctions.o
-    0x08010d30   0x08010d30   0x00000036   Code   RO         3653    .text.arm_cfft_init_128_f32  transformfunctions.o
+    0x08010cf8   0x08010cf8   0x00000038   Code   RO         3665    .text.arm_cfft_init_1024_f32  transformfunctions.o
+    0x08010d30   0x08010d30   0x00000036   Code   RO         3671    .text.arm_cfft_init_128_f32  transformfunctions.o
     0x08010d66   0x08010d66   0x00000002   PAD
-    0x08010d68   0x08010d68   0x00000036   Code   RO         3659    .text.arm_cfft_init_16_f32  transformfunctions.o
+    0x08010d68   0x08010d68   0x00000036   Code   RO         3677    .text.arm_cfft_init_16_f32  transformfunctions.o
     0x08010d9e   0x08010d9e   0x00000002   PAD
-    0x08010da0   0x08010da0   0x00000038   Code   RO         3645    .text.arm_cfft_init_2048_f32  transformfunctions.o
-    0x08010dd8   0x08010dd8   0x00000038   Code   RO         3651    .text.arm_cfft_init_256_f32  transformfunctions.o
-    0x08010e10   0x08010e10   0x00000036   Code   RO         3657    .text.arm_cfft_init_32_f32  transformfunctions.o
+    0x08010da0   0x08010da0   0x00000038   Code   RO         3663    .text.arm_cfft_init_2048_f32  transformfunctions.o
+    0x08010dd8   0x08010dd8   0x00000038   Code   RO         3669    .text.arm_cfft_init_256_f32  transformfunctions.o
+    0x08010e10   0x08010e10   0x00000036   Code   RO         3675    .text.arm_cfft_init_32_f32  transformfunctions.o
     0x08010e46   0x08010e46   0x00000002   PAD
-    0x08010e48   0x08010e48   0x00000038   Code   RO         3643    .text.arm_cfft_init_4096_f32  transformfunctions.o
-    0x08010e80   0x08010e80   0x00000038   Code   RO         3649    .text.arm_cfft_init_512_f32  transformfunctions.o
-    0x08010eb8   0x08010eb8   0x00000036   Code   RO         3655    .text.arm_cfft_init_64_f32  transformfunctions.o
+    0x08010e48   0x08010e48   0x00000038   Code   RO         3661    .text.arm_cfft_init_4096_f32  transformfunctions.o
+    0x08010e80   0x08010e80   0x00000038   Code   RO         3667    .text.arm_cfft_init_512_f32  transformfunctions.o
+    0x08010eb8   0x08010eb8   0x00000036   Code   RO         3673    .text.arm_cfft_init_64_f32  transformfunctions.o
     0x08010eee   0x08010eee   0x00000002   PAD
-    0x08010ef0   0x08010ef0   0x000000e4   Code   RO         3661    .text.arm_cfft_init_f32  transformfunctions.o
+    0x08010ef0   0x08010ef0   0x000000e4   Code   RO         3679    .text.arm_cfft_init_f32  transformfunctions.o
     0x08010fd4   0x08010fd4   0x00000004   PAD
-    0x08010fd8   0x08010fd8   0x000003ea   Code   RO         3611    .text.arm_cfft_radix8by2_f32  transformfunctions.o
+    0x08010fd8   0x08010fd8   0x000003ea   Code   RO         3629    .text.arm_cfft_radix8by2_f32  transformfunctions.o
     0x080113c2   0x080113c2   0x00000006   PAD
-    0x080113c8   0x080113c8   0x00000a60   Code   RO         3613    .text.arm_cfft_radix8by4_f32  transformfunctions.o
-    0x08011e28   0x08011e28   0x00000086   Code   RO         2488    .text.arm_cmplx_mag_f32  complexmathfunctions.o
+    0x080113c8   0x080113c8   0x00000a60   Code   RO         3631    .text.arm_cfft_radix8by4_f32  transformfunctions.o
+    0x08011e28   0x08011e28   0x00000086   Code   RO         2506    .text.arm_cmplx_mag_f32  complexmathfunctions.o
     0x08011eae   0x08011eae   0x00000002   PAD
-    0x08011eb0   0x08011eb0   0x00000e04   Code   RO         3615    .text.arm_radix8_butterfly_f32  transformfunctions.o
+    0x08011eb0   0x08011eb0   0x00000e04   Code   RO         3633    .text.arm_radix8_butterfly_f32  transformfunctions.o
     0x08012cb4   0x08012cb4   0x00000004   PAD
-    0x08012cb8   0x08012cb8   0x00000028   Code   RO         2066    .text.fputc         callback.o
+    0x08012cb8   0x08012cb8   0x00000028   Code   RO         2068    .text.fputc         callback.o
     0x08012ce0   0x08012ce0   0x00000040   Code   RO           11    .text.main          main.o
-    0x08012d20   0x08012d20   0x0000003e   Code   RO         4528    CL$$btod_d2e        c_w.l(btod.o)
-    0x08012d5e   0x08012d5e   0x00000046   Code   RO         4530    CL$$btod_d2e_denorm_low  c_w.l(btod.o)
-    0x08012da4   0x08012da4   0x00000060   Code   RO         4529    CL$$btod_d2e_norm_op1  c_w.l(btod.o)
-    0x08012e04   0x08012e04   0x00000338   Code   RO         4538    CL$$btod_div_common  c_w.l(btod.o)
-    0x0801313c   0x0801313c   0x000000dc   Code   RO         4535    CL$$btod_e2e        c_w.l(btod.o)
-    0x08013218   0x08013218   0x0000002a   Code   RO         4532    CL$$btod_ediv       c_w.l(btod.o)
-    0x08013242   0x08013242   0x0000002a   Code   RO         4531    CL$$btod_emul       c_w.l(btod.o)
-    0x0801326c   0x0801326c   0x00000244   Code   RO         4537    CL$$btod_mult_common  c_w.l(btod.o)
-    0x080134b0   0x080134b0   0x00000030   Code   RO         4360    i.__ARM_fpclassify  m_wv.l(fpclassify.o)
-    0x080134e0   0x080134e0   0x00000026   Code   RO         4362    i.__ARM_fpclassifyf  m_wv.l(fpclassifyf.o)
+    0x08012d20   0x08012d20   0x0000003e   Code   RO         4552    CL$$btod_d2e        c_w.l(btod.o)
+    0x08012d5e   0x08012d5e   0x00000046   Code   RO         4554    CL$$btod_d2e_denorm_low  c_w.l(btod.o)
+    0x08012da4   0x08012da4   0x00000060   Code   RO         4553    CL$$btod_d2e_norm_op1  c_w.l(btod.o)
+    0x08012e04   0x08012e04   0x00000338   Code   RO         4562    CL$$btod_div_common  c_w.l(btod.o)
+    0x0801313c   0x0801313c   0x000000dc   Code   RO         4559    CL$$btod_e2e        c_w.l(btod.o)
+    0x08013218   0x08013218   0x0000002a   Code   RO         4556    CL$$btod_ediv       c_w.l(btod.o)
+    0x08013242   0x08013242   0x0000002a   Code   RO         4555    CL$$btod_emul       c_w.l(btod.o)
+    0x0801326c   0x0801326c   0x00000244   Code   RO         4561    CL$$btod_mult_common  c_w.l(btod.o)
+    0x080134b0   0x080134b0   0x00000030   Code   RO         4384    i.__ARM_fpclassify  m_wv.l(fpclassify.o)
+    0x080134e0   0x080134e0   0x00000026   Code   RO         4386    i.__ARM_fpclassifyf  m_wv.l(fpclassifyf.o)
     0x08013506   0x08013506   0x00000002   PAD
-    0x08013508   0x08013508   0x000002ac   Code   RO         4155    i.__hardfp_atan2f   m_wv.l(atan2f.o)
-    0x080137b4   0x080137b4   0x0000003a   Code   RO         4214    i.__hardfp_sqrtf    m_wv.l(sqrtf.o)
-    0x080137ee   0x080137ee   0x00000006   Code   RO         4366    i.__mathlib_flt_infnan2  m_wv.l(funder.o)
-    0x080137f4   0x080137f4   0x00000010   Code   RO         4370    i.__mathlib_flt_underflow  m_wv.l(funder.o)
-    0x08013804   0x08013804   0x0000000e   Code   RO         4289    i._is_digit         c_w.l(__printf_wp.o)
+    0x08013508   0x08013508   0x000002ac   Code   RO         4173    i.__hardfp_atan2f   m_wv.l(atan2f.o)
+    0x080137b4   0x080137b4   0x0000003a   Code   RO         4238    i.__hardfp_sqrtf    m_wv.l(sqrtf.o)
+    0x080137ee   0x080137ee   0x00000006   Code   RO         4390    i.__mathlib_flt_infnan2  m_wv.l(funder.o)
+    0x080137f4   0x080137f4   0x00000010   Code   RO         4394    i.__mathlib_flt_underflow  m_wv.l(funder.o)
+    0x08013804   0x08013804   0x0000000e   Code   RO         4313    i._is_digit         c_w.l(__printf_wp.o)
     0x08013812   0x08013812   0x00000002   PAD
-    0x08013814   0x08013814   0x0000002c   Code   RO         4564    locale$$code        c_w.l(lc_numeric_c.o)
-    0x08013840   0x08013840   0x0000002c   Code   RO         4685    locale$$code        c_w.l(lc_ctype_c.o)
-    0x0801386c   0x0801386c   0x0000001a   Code   RO         4695    x$fpl$fpinit        fz_wv.l(fpinit.o)
-    0x08013886   0x08013886   0x00000004   Code   RO         4334    x$fpl$printf1       fz_wv.l(printf1.o)
-    0x0801388a   0x0801388a   0x00000004   Code   RO         4336    x$fpl$printf2       fz_wv.l(printf2.o)
-    0x0801388e   0x0801388e   0x00000000   Code   RO         4342    x$fpl$usenofp       fz_wv.l(usenofp.o)
+    0x08013814   0x08013814   0x0000002c   Code   RO         4588    locale$$code        c_w.l(lc_numeric_c.o)
+    0x08013840   0x08013840   0x0000002c   Code   RO         4709    locale$$code        c_w.l(lc_ctype_c.o)
+    0x0801386c   0x0801386c   0x0000001a   Code   RO         4719    x$fpl$fpinit        fz_wv.l(fpinit.o)
+    0x08013886   0x08013886   0x00000004   Code   RO         4358    x$fpl$printf1       fz_wv.l(printf1.o)
+    0x0801388a   0x0801388a   0x00000004   Code   RO         4360    x$fpl$printf2       fz_wv.l(printf2.o)
+    0x0801388e   0x0801388e   0x00000000   Code   RO         4366    x$fpl$usenofp       fz_wv.l(usenofp.o)
     0x0801388e   0x0801388e   0x00000002   PAD
-    0x08013890   0x08013890   0x00000008   Data   RO         4248    .constdata          c_w.l(_printf_wctomb.o)
-    0x08013898   0x08013898   0x00000028   Data   RO         4277    .constdata          c_w.l(_printf_hex_int_ll_ptr.o)
-    0x080138c0   0x080138c0   0x00000011   Data   RO         4297    .constdata          c_w.l(__printf_flags_ss_wp.o)
-    0x080138d1   0x080138d1   0x00000026   Data   RO         4423    .constdata          c_w.l(_printf_fp_hex.o)
-    0x080138f7   0x080138f7   0x00000004   Data   RO         4448    .constdata          c_w.l(sys_io_names.o)
-    0x080138fb   0x080138fb   0x00000004   Data   RO         4449    .constdata          c_w.l(sys_io_names.o)
-    0x080138ff   0x080138ff   0x00000004   Data   RO         4450    .constdata          c_w.l(sys_io_names.o)
+    0x08013890   0x08013890   0x00000008   Data   RO         4272    .constdata          c_w.l(_printf_wctomb.o)
+    0x08013898   0x08013898   0x00000028   Data   RO         4301    .constdata          c_w.l(_printf_hex_int_ll_ptr.o)
+    0x080138c0   0x080138c0   0x00000011   Data   RO         4321    .constdata          c_w.l(__printf_flags_ss_wp.o)
+    0x080138d1   0x080138d1   0x00000026   Data   RO         4447    .constdata          c_w.l(_printf_fp_hex.o)
+    0x080138f7   0x080138f7   0x00000004   Data   RO         4472    .constdata          c_w.l(sys_io_names.o)
+    0x080138fb   0x080138fb   0x00000004   Data   RO         4473    .constdata          c_w.l(sys_io_names.o)
+    0x080138ff   0x080138ff   0x00000004   Data   RO         4474    .constdata          c_w.l(sys_io_names.o)
     0x08013903   0x08013903   0x00000001   PAD
-    0x08013904   0x08013904   0x00000094   Data   RO         4526    .constdata          c_w.l(bigflt0.o)
+    0x08013904   0x08013904   0x00000094   Data   RO         4550    .constdata          c_w.l(bigflt0.o)
     0x08013998   0x08013998   0x00000010   Data   RO         1970    .rodata.D1CorePrescTable  system_stm32h7xx.o
     0x080139a8   0x080139a8   0x00000008   Data   RO          695    .rodata.DMA_CalcBaseAndBitshift.flagBitshiftOffset  stm32h7xx_hal_dma.o
     0x080139b0   0x080139b0   0x00000008   Data   RO         1954    .rodata.UARTEx_SetNbDataToProcess.denominator  stm32h7xx_hal_uart_ex.o
     0x080139b8   0x080139b8   0x00000008   Data   RO         1953    .rodata.UARTEx_SetNbDataToProcess.numerator  stm32h7xx_hal_uart_ex.o
     0x080139c0   0x080139c0   0x00000018   Data   RO         1909    .rodata.UARTPrescTable  stm32h7xx_hal_uart.o
-    0x080139d8   0x080139d8   0x00000e10   Data   RO         2329    .rodata.armBitRevIndexTable1024  commontables.o
-    0x080147e8   0x080147e8   0x000001a0   Data   RO         2326    .rodata.armBitRevIndexTable128  commontables.o
-    0x08014988   0x08014988   0x00000028   Data   RO         2323    .rodata.armBitRevIndexTable16  commontables.o
-    0x080149b0   0x080149b0   0x00001dc0   Data   RO         2330    .rodata.armBitRevIndexTable2048  commontables.o
-    0x08016770   0x08016770   0x00000370   Data   RO         2327    .rodata.armBitRevIndexTable256  commontables.o
-    0x08016ae0   0x08016ae0   0x00000060   Data   RO         2324    .rodata.armBitRevIndexTable32  commontables.o
-    0x08016b40   0x08016b40   0x00001f80   Data   RO         2331    .rodata.armBitRevIndexTable4096  commontables.o
-    0x08018ac0   0x08018ac0   0x00000380   Data   RO         2328    .rodata.armBitRevIndexTable512  commontables.o
-    0x08018e40   0x08018e40   0x00000070   Data   RO         2325    .rodata.armBitRevIndexTable64  commontables.o
-    0x08018eb0   0x08018eb0   0x00000010   Data   RO         2385    .rodata.arm_cfft_sR_f32_len1024  commontables.o
-    0x08018ec0   0x08018ec0   0x00000010   Data   RO         2382    .rodata.arm_cfft_sR_f32_len128  commontables.o
-    0x08018ed0   0x08018ed0   0x00000010   Data   RO         2379    .rodata.arm_cfft_sR_f32_len16  commontables.o
-    0x08018ee0   0x08018ee0   0x00000010   Data   RO         2386    .rodata.arm_cfft_sR_f32_len2048  commontables.o
-    0x08018ef0   0x08018ef0   0x00000010   Data   RO         2383    .rodata.arm_cfft_sR_f32_len256  commontables.o
-    0x08018f00   0x08018f00   0x00000010   Data   RO         2380    .rodata.arm_cfft_sR_f32_len32  commontables.o
-    0x08018f10   0x08018f10   0x00000010   Data   RO         2387    .rodata.arm_cfft_sR_f32_len4096  commontables.o
-    0x08018f20   0x08018f20   0x00000010   Data   RO         2384    .rodata.arm_cfft_sR_f32_len512  commontables.o
-    0x08018f30   0x08018f30   0x00000010   Data   RO         2381    .rodata.arm_cfft_sR_f32_len64  commontables.o
-    0x08018f40   0x08018f40   0x0000000b   Data   RO         2055    .rodata.str1.1      command.o
+    0x080139d8   0x080139d8   0x00000e10   Data   RO         2347    .rodata.armBitRevIndexTable1024  commontables.o
+    0x080147e8   0x080147e8   0x000001a0   Data   RO         2344    .rodata.armBitRevIndexTable128  commontables.o
+    0x08014988   0x08014988   0x00000028   Data   RO         2341    .rodata.armBitRevIndexTable16  commontables.o
+    0x080149b0   0x080149b0   0x00001dc0   Data   RO         2348    .rodata.armBitRevIndexTable2048  commontables.o
+    0x08016770   0x08016770   0x00000370   Data   RO         2345    .rodata.armBitRevIndexTable256  commontables.o
+    0x08016ae0   0x08016ae0   0x00000060   Data   RO         2342    .rodata.armBitRevIndexTable32  commontables.o
+    0x08016b40   0x08016b40   0x00001f80   Data   RO         2349    .rodata.armBitRevIndexTable4096  commontables.o
+    0x08018ac0   0x08018ac0   0x00000380   Data   RO         2346    .rodata.armBitRevIndexTable512  commontables.o
+    0x08018e40   0x08018e40   0x00000070   Data   RO         2343    .rodata.armBitRevIndexTable64  commontables.o
+    0x08018eb0   0x08018eb0   0x00000010   Data   RO         2403    .rodata.arm_cfft_sR_f32_len1024  commontables.o
+    0x08018ec0   0x08018ec0   0x00000010   Data   RO         2400    .rodata.arm_cfft_sR_f32_len128  commontables.o
+    0x08018ed0   0x08018ed0   0x00000010   Data   RO         2397    .rodata.arm_cfft_sR_f32_len16  commontables.o
+    0x08018ee0   0x08018ee0   0x00000010   Data   RO         2404    .rodata.arm_cfft_sR_f32_len2048  commontables.o
+    0x08018ef0   0x08018ef0   0x00000010   Data   RO         2401    .rodata.arm_cfft_sR_f32_len256  commontables.o
+    0x08018f00   0x08018f00   0x00000010   Data   RO         2398    .rodata.arm_cfft_sR_f32_len32  commontables.o
+    0x08018f10   0x08018f10   0x00000010   Data   RO         2405    .rodata.arm_cfft_sR_f32_len4096  commontables.o
+    0x08018f20   0x08018f20   0x00000010   Data   RO         2402    .rodata.arm_cfft_sR_f32_len512  commontables.o
+    0x08018f30   0x08018f30   0x00000010   Data   RO         2399    .rodata.arm_cfft_sR_f32_len64  commontables.o
+    0x08018f40   0x08018f40   0x0000000b   Data   RO         2057    .rodata.str1.1      command.o
     0x08018f4b   0x08018f4b   0x00000001   PAD
-    0x08018f4c   0x08018f4c   0x00002000   Data   RO         2293    .rodata.twiddleCoef_1024  commontables.o
-    0x0801af4c   0x0801af4c   0x00000400   Data   RO         2290    .rodata.twiddleCoef_128  commontables.o
-    0x0801b34c   0x0801b34c   0x00000080   Data   RO         2287    .rodata.twiddleCoef_16  commontables.o
-    0x0801b3cc   0x0801b3cc   0x00004000   Data   RO         2294    .rodata.twiddleCoef_2048  commontables.o
-    0x0801f3cc   0x0801f3cc   0x00000800   Data   RO         2291    .rodata.twiddleCoef_256  commontables.o
-    0x0801fbcc   0x0801fbcc   0x00000100   Data   RO         2288    .rodata.twiddleCoef_32  commontables.o
-    0x0801fccc   0x0801fccc   0x00008000   Data   RO         2295    .rodata.twiddleCoef_4096  commontables.o
-    0x08027ccc   0x08027ccc   0x00001000   Data   RO         2292    .rodata.twiddleCoef_512  commontables.o
-    0x08028ccc   0x08028ccc   0x00000200   Data   RO         2289    .rodata.twiddleCoef_64  commontables.o
-    0x08028ecc   0x08028ecc   0x00000020   Data   RO         4780    Region$$Table       anon$$obj.o
-    0x08028eec   0x08028eec   0x0000001c   Data   RO         4563    locale$$data        c_w.l(lc_numeric_c.o)
-    0x08028f08   0x08028f08   0x00000110   Data   RO         4684    locale$$data        c_w.l(lc_ctype_c.o)
+    0x08018f4c   0x08018f4c   0x00002000   Data   RO         2311    .rodata.twiddleCoef_1024  commontables.o
+    0x0801af4c   0x0801af4c   0x00000400   Data   RO         2308    .rodata.twiddleCoef_128  commontables.o
+    0x0801b34c   0x0801b34c   0x00000080   Data   RO         2305    .rodata.twiddleCoef_16  commontables.o
+    0x0801b3cc   0x0801b3cc   0x00004000   Data   RO         2312    .rodata.twiddleCoef_2048  commontables.o
+    0x0801f3cc   0x0801f3cc   0x00000800   Data   RO         2309    .rodata.twiddleCoef_256  commontables.o
+    0x0801fbcc   0x0801fbcc   0x00000100   Data   RO         2306    .rodata.twiddleCoef_32  commontables.o
+    0x0801fccc   0x0801fccc   0x00008000   Data   RO         2313    .rodata.twiddleCoef_4096  commontables.o
+    0x08027ccc   0x08027ccc   0x00001000   Data   RO         2310    .rodata.twiddleCoef_512  commontables.o
+    0x08028ccc   0x08028ccc   0x00000200   Data   RO         2307    .rodata.twiddleCoef_64  commontables.o
+    0x08028ecc   0x08028ecc   0x00000020   Data   RO         4804    Region$$Table       anon$$obj.o
+    0x08028eec   0x08028eec   0x0000001c   Data   RO         4587    locale$$data        c_w.l(lc_numeric_c.o)
+    0x08028f08   0x08028f08   0x00000110   Data   RO         4708    locale$$data        c_w.l(lc_ctype_c.o)
 
 
     Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08029018, Size: 0x00000000, Max: 0x00020000, ABSOLUTE)
@@ -9912,28 +9949,28 @@ Memory Map of the image
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x24000000   0x08029018   0x00000004   Data   RW         4325    .data               c_w.l(stdio_streams.o)
-    0x24000004   0x0802901c   0x00000004   Data   RW         4326    .data               c_w.l(stdio_streams.o)
-    0x24000008   0x08029020   0x00000004   Data   RW         4327    .data               c_w.l(stdio_streams.o)
+    0x24000000   0x08029018   0x00000004   Data   RW         4349    .data               c_w.l(stdio_streams.o)
+    0x24000004   0x0802901c   0x00000004   Data   RW         4350    .data               c_w.l(stdio_streams.o)
+    0x24000008   0x08029020   0x00000004   Data   RW         4351    .data               c_w.l(stdio_streams.o)
     0x2400000c   0x08029024   0x00000004   Data   RW         1968    .data.SystemCoreClock  system_stm32h7xx.o
     0x24000010   0x08029028   0x00000004   Data   RW         1969    .data.SystemD2Clock  system_stm32h7xx.o
     0x24000014   0x0802902c   0x00000001   Data   RW         1079    .data.uwTickFreq    stm32h7xx_hal.o
     0x24000015   0x0802902d   0x00000003   PAD
     0x24000018   0x08029030   0x00000004   Data   RW         1078    .data.uwTickPrio    stm32h7xx_hal.o
     0x2400001c   0x08029034   0x00000004   PAD
-    0x24000020        -       0x00000054   Zero   RW         4322    .bss                c_w.l(stdio_streams.o)
-    0x24000074        -       0x00000054   Zero   RW         4323    .bss                c_w.l(stdio_streams.o)
-    0x240000c8        -       0x00000054   Zero   RW         4324    .bss                c_w.l(stdio_streams.o)
-    0x2400011c        -       0x00000060   Zero   RW         4452    .bss                c_w.l(libspace.o)
+    0x24000020        -       0x00000054   Zero   RW         4346    .bss                c_w.l(stdio_streams.o)
+    0x24000074        -       0x00000054   Zero   RW         4347    .bss                c_w.l(stdio_streams.o)
+    0x240000c8        -       0x00000054   Zero   RW         4348    .bss                c_w.l(stdio_streams.o)
+    0x2400011c        -       0x00000060   Zero   RW         4476    .bss                c_w.l(libspace.o)
     0x2400017c        -       0x00002000   Zero   RW         1985    .bss.ADC_RawBuff    g_var.o
     0x2400217c        -       0x00004000   Zero   RW         1986    .bss.ADC_Voltage    g_var.o
-    0x2400617c        -       0x00000001   Zero   RW         2056    .bss.Command        command.o
+    0x2400617c        -       0x00000001   Zero   RW         2058    .bss.Command        command.o
     0x2400617d   0x08029034   0x00000003   PAD
-    0x24006180        -       0x00008000   Zero   RW         2057    .bss.CommandFFTInput  command.o
-    0x2400e180        -       0x00002000   Zero   RW         2058    .bss.CommandFFTOutput  command.o
-    0x24010180        -       0x00000040   Zero   RW         2053    .bss.CommandLine    command.o
-    0x240101c0        -       0x00000002   Zero   RW         2054    .bss.CommandLineIndex  command.o
-    0x240101c2        -       0x00000080   Zero   RW         2052    .bss.CommandRxBuffer  command.o
+    0x24006180        -       0x00008000   Zero   RW         2059    .bss.CommandFFTInput  command.o
+    0x2400e180        -       0x00002000   Zero   RW         2060    .bss.CommandFFTOutput  command.o
+    0x24010180        -       0x00000040   Zero   RW         2055    .bss.CommandLine    command.o
+    0x240101c0        -       0x00000002   Zero   RW         2056    .bss.CommandLineIndex  command.o
+    0x240101c2        -       0x00000080   Zero   RW         2054    .bss.CommandRxBuffer  command.o
     0x24010242   0x08029034   0x00000002   PAD
     0x24010244        -       0x00000040   Zero   RW         1987    .bss.InputSignalPara  g_var.o
     0x24010284        -       0x00000001   Zero   RW         1980    .bss.adc1_done      g_var.o
@@ -9971,7 +10008,7 @@ Image component sizes
        148          0          0          0      24705       2010   g_var.o
        156          0          0          0          0       2320   gpio.o
        386          0          0          0          0       3634   main.o
-      1908         24          0          0          0       7490   my_math.o
+      1908         24          0          0          0       8040   my_math.o
        346          0          0          0        136       8158   spi.o
         72         30        664          0       1536        836   startup_stm32h743xx.o
        308          0          0          5          4      13752   stm32h7xx_hal.o
@@ -9996,7 +10033,7 @@ Image component sizes
        974          0          0          0        564      12132   usart.o
 
     ----------------------------------------------------------------------
-     69184        524      88044         16      68408     437100   Object Totals
+     69184        524      88044         16      68408     437650   Object Totals
          0          0         32          0          0          0   (incl. Generated)
        496         12          1          3         12          0   (incl. Padding)
 
@@ -10141,8 +10178,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     79352       1060      88608         28      68756     440084   Grand Totals
-     79352       1060      88608         28      68756     440084   ELF Image Totals
+     79352       1060      88608         28      68756     440634   Grand Totals
+     79352       1060      88608         28      68756     440634   ELF Image Totals
      79352       1060      88608         28          0          0   ROM Totals
 
 ==============================================================================

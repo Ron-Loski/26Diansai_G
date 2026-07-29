@@ -3,6 +3,7 @@
 
 /* C标准库 */
 #include <math.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -24,6 +25,7 @@
 #include "g_var.h"
 #include "Command.h"
 #include "My_Math.h"
+#include "My_FFT.h"
 #include "CallBack.h"
 #include "Justfloat.h"
 
