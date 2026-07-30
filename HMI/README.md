@@ -44,3 +44,12 @@
 
 `main.c` 在 USART2 初始化后调用 `HMI_Display_Init()`，每次分析成功后调用
 `HMI_Display_Update()`。触摸坐标由 `HMI_Display_Service()` 轮询处理。
+
+## 工程集成说明
+
+本分支不修改 CubeMX/Keil 自动生成的工程配置文件。请在 CubeMX 中确认
+USART2 使用 PA2/PA3、异步模式、115200、8N1、无硬件流控，然后重新生成代码。
+
+生成后，在 Keil 的工程分组中手动添加 `Uitls/Src/hmi_display.c`。头文件目录
+`Uitls/Inc` 已由现有工程使用；如果本机工程中尚未配置，请在 Keil 的 Include
+Paths 中添加该目录。

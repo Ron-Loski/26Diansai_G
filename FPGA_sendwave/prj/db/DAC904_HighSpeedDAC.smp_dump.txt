@@ -1,0 +1,16 @@
+
+State Machine - |DAC904_WriteTEST|AnalyzerSpiSlave:U3_analyzer_spi|request_word_index
+Name request_word_index.11 request_word_index.10 request_word_index.01 request_word_index.00 
+request_word_index.00 0 0 0 0 
+request_word_index.01 0 0 1 1 
+request_word_index.10 0 1 0 1 
+request_word_index.11 1 0 0 1 
+
+State Machine - |DAC904_WriteTEST|Ad9233SpiInit:U1_ad9233_spi_init|state
+Name state.STATE_DONE state.STATE_GAP state.STATE_HIGH state.STATE_LOW state.STATE_LOAD state.STATE_WAIT 
+state.STATE_WAIT 0 0 0 0 0 0 
+state.STATE_LOAD 0 0 0 0 1 1 
+state.STATE_LOW 0 0 0 1 0 1 
+state.STATE_HIGH 0 0 1 0 0 1 
+state.STATE_GAP 0 1 0 0 0 1 
+state.STATE_DONE 1 0 0 0 0 1 

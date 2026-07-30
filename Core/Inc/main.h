@@ -65,12 +65,10 @@ void Error_Handler(void);
 #define Debug_Tx_GPIO_Port GPIOD
 #define Debug_Rx_Pin GPIO_PIN_9
 #define Debug_Rx_GPIO_Port GPIOD
-#define FPGA_Tx_Pin GPIO_PIN_6
-#define FPGA_Tx_GPIO_Port GPIOC
-#define FPGA_Rx_Pin GPIO_PIN_7
-#define FPGA_Rx_GPIO_Port GPIOC
 #define FPGA_CAPTURE_CS_Pin GPIO_PIN_6
 #define FPGA_CAPTURE_CS_GPIO_Port GPIOC
+#define FPGA_Rx_UNUSED_Pin GPIO_PIN_7
+#define FPGA_Rx_UNUSED_GPIO_Port GPIOC
 
 /* USER CODE BEGIN Private defines */
 
