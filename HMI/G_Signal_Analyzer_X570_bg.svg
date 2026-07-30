@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="600" viewBox="0 0 800 480" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071422"/>
+      <stop offset="1" stop-color="#0A1D2E"/>
+    </linearGradient>
+    <linearGradient id="header" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0B2538"/>
+      <stop offset="1" stop-color="#102D42"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-20%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000814" flood-opacity=".45"/>
+    </filter>
+    <style>
+      .cn{font-family:"Microsoft YaHei","Noto Sans CJK SC",sans-serif}
+      .en{font-family:"Segoe UI","Arial",sans-serif}
+      .panel{fill:#0D2234;stroke:#1B4158;stroke-width:1}
+      .grid{stroke:#1A3B50;stroke-width:1;opacity:.72}
+      .axis{fill:#708A9A;font-size:11px}
+      .label{fill:#8FA8B8;font-size:13px}
+      .section{fill:#E7F4FB;font-size:17px;font-weight:600}
+    </style>
+  </defs>
+
+  <rect width="800" height="480" fill="url(#bg)"/>
+  <rect width="800" height="58" fill="url(#header)"/>
+  <rect y="57" width="800" height="1" fill="#1A526B"/>
+  <circle cx="27" cy="28" r="12" fill="#12B8B0"/>
+  <path d="M20 29l5 5 10-13" fill="none" stroke="#EFFFFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="48" y="29" class="cn" fill="#F0FAFF" font-size="21" font-weight="700">周期信号测量分析装置</text>
+  <text x="48" y="47" class="en" fill="#71A0B9" font-size="10" letter-spacing="1.2">2026 TI CUP · G 题 · PERIODIC SIGNAL ANALYZER</text>
+  <rect x="670" y="16" width="112" height="28" rx="14" fill="#0A3A3D" stroke="#1BC5B9"/>
+  <circle cx="687" cy="30" r="4" fill="#35E7C6"/>
+  <text x="698" y="35" class="cn" fill="#CFFFF8" font-size="13">实时测量</text>
+
+  <g filter="url(#shadow)">
+    <rect class="panel" x="16" y="74" width="496" height="222" rx="10"/>
+    <rect class="panel" x="528" y="74" width="256" height="222" rx="10"/>
+    <rect class="panel" x="16" y="312" width="496" height="152" rx="10"/>
+    <rect class="panel" x="528" y="312" width="256" height="152" rx="10"/>
+  </g>
+
+  <text x="31" y="99" class="cn section">时域波形</text>
+  <text x="110" y="98" class="en label">TIME DOMAIN</text>
+  <rect x="369" y="83" width="61" height="25" rx="12.5" fill="#13404C" stroke="#1CC9B8"/>
+  <text x="386" y="100" class="cn" fill="#D8FFFA" font-size="12">1 周期</text>
+  <rect x="437" y="83" width="61" height="25" rx="12.5" fill="#102B3E" stroke="#2B566D"/>
+  <text x="454" y="100" class="cn" fill="#8CA5B5" font-size="12">3 周期</text>
+
+  <rect x="31" y="116" width="466" height="160" rx="4" fill="#071926" stroke="#173C51"/>
+  <g class="grid">
+    <path d="M31 148H497M31 180H497M31 212H497M31 244H497"/>
+    <path d="M89 116V276M147 116V276M205 116V276M263 116V276M321 116V276M379 116V276M437 116V276"/>
+  </g>
+  <path d="M31 196H497" stroke="#2F657B" stroke-width="1"/>
+  <text x="37" y="130" class="en axis">+U</text>
+  <text x="37" y="271" class="en axis">−U</text>
+  <text x="476" y="270" class="en axis">t</text>
+
+  <text x="544" y="99" class="cn section">测量结果</text>
+  <text x="633" y="98" class="en label">MEASUREMENTS</text>
+  <rect x="544" y="113" width="224" height="48" rx="6" fill="#0A1B29" stroke="#18455A"/>
+  <rect x="544" y="168" width="224" height="48" rx="6" fill="#0A1B29" stroke="#18455A"/>
+  <rect x="544" y="223" width="224" height="48" rx="6" fill="#0A1B29" stroke="#18455A"/>
+  <rect x="544" y="113" width="4" height="48" rx="2" fill="#22D3C5"/>
+  <rect x="544" y="168" width="4" height="48" rx="2" fill="#5FB3FF"/>
+  <rect x="544" y="223" width="4" height="48" rx="2" fill="#F5C85B"/>
+  <text x="558" y="132" class="cn label">峰峰值</text>
+  <text x="558" y="150" class="en" fill="#56798D" font-size="10">Upp</text>
+  <text x="739" y="145" class="en" fill="#6F91A3" font-size="12">mV</text>
+  <text x="558" y="187" class="cn label">真有效值</text>
+  <text x="558" y="205" class="en" fill="#56798D" font-size="10">TRUE RMS</text>
+  <text x="739" y="200" class="en" fill="#6F91A3" font-size="12">mV</text>
+  <text x="558" y="242" class="cn label">基波频率</text>
+  <text x="558" y="260" class="en" fill="#56798D" font-size="10">FUNDAMENTAL</text>
+  <text x="733" y="255" class="en" fill="#6F91A3" font-size="12">kHz</text>
+
+  <text x="31" y="337" class="cn section">正频率电压频谱</text>
+  <text x="174" y="336" class="en label">VOLTAGE SPECTRUM</text>
+  <rect x="31" y="350" width="466" height="96" rx="4" fill="#071926" stroke="#173C51"/>
+  <g class="grid">
+    <path d="M31 374H497M31 398H497M31 422H497"/>
+    <path d="M124 350V446M217 350V446M310 350V446M403 350V446"/>
+  </g>
+  <path d="M31 434H497" stroke="#2F657B" stroke-width="1"/>
+  <text x="34" y="460" class="en axis">0</text>
+  <text x="109" y="460" class="en axis">100k</text>
+  <text x="202" y="460" class="en axis">200k</text>
+  <text x="295" y="460" class="en axis">300k</text>
+  <text x="388" y="460" class="en axis">400k</text>
+  <text x="469" y="460" class="en axis">500kHz</text>
+
+  <text x="544" y="337" class="cn section">频率分量</text>
+  <text x="635" y="336" class="en label">COMPONENTS</text>
+  <rect x="544" y="349" width="224" height="26" rx="5" fill="#123044"/>
+  <text x="556" y="367" class="en" fill="#7E9CAF" font-size="11">ORDER</text>
+  <text x="615" y="367" class="en" fill="#7E9CAF" font-size="11">FREQ(kHz)</text>
+  <text x="710" y="367" class="en" fill="#7E9CAF" font-size="11">PEAK(mV)</text>
+  <path d="M544 404H768M544 433H768" stroke="#173D52"/>
+  <circle cx="562" cy="389" r="9" fill="#164D53"/><text x="559" y="393" class="en" fill="#62E4D8" font-size="11">1</text>
+  <circle cx="562" cy="418" r="9" fill="#173C57"/><text x="559" y="422" class="en" fill="#75BDFF" font-size="11">2</text>
+  <circle cx="562" cy="447" r="9" fill="#493F23"/><text x="559" y="451" class="en" fill="#FFD96D" font-size="11">3</text>
+</svg>

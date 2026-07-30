@@ -106,6 +106,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   USART3_CommandRx_Init();
   SignalAnalyzer_Init();
+  HMI_Display_Init();
   if (FPGACapture_Init() != HAL_OK)
   {
     printf("ANALYZER_ERROR,fpga_capture_init\r\n");
@@ -127,6 +128,7 @@ int main(void)
   while (1)
   {
     Command_Execute();
+    HMI_Display_Service();
     FPGACapture_Service();
 
     if ((HAL_GetTick() - AnalyzerStatusTick) >= 1000U)
@@ -181,9 +183,13 @@ int main(void)
                  AnalyzerResult.component[i].amplitude_peak_mv,
                  AnalyzerResult.component[i].phase_rad);
         }
+        HMI_Display_Update(&AnalyzerResult,
+                           SignalAnalyzer_GetDisplayWave(),
+                           ANALYZER_DISPLAY_POINTS);
       }
       else
       {
+        HMI_Display_ShowStatus("NO SIGNAL");
         printf("ANALYZER_NO_VALID_COMPONENT,frame=%u\r\n",
                capture_status->frame_id);
       }
