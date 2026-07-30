@@ -59,4 +59,5 @@ project/callback.o: ..\Uitls\Src\CallBack.c ..\Uitls\Inc\g_Inc.h \
   ..\Core\Inc\spi.h ..\Core\Inc\stm32h7xx_it.h ..\Core\Inc\tim.h \
   ..\Core\Inc\usart.h ..\Uitls\Inc\g_var.h ..\Uitls\Inc\Command.h \
   ..\Uitls\Inc\My_Math.h ..\Uitls\Inc\My_FFT.h ..\Uitls\Inc\CallBack.h \
-  ..\Uitls\Inc\Justfloat.h
+  ..\Uitls\Inc\Justfloat.h ..\Uitls\Inc\fpga_capture.h \
+  ..\Uitls\Inc\signal_analyzer.h ..\Uitls\Inc\hmi_display.h

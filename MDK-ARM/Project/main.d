@@ -59,4 +59,5 @@ project/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\window_functions.h \
   ..\Core\Inc\stm32h7xx_it.h ..\Uitls\Inc\g_var.h ..\Uitls\Inc\Command.h \
   ..\Uitls\Inc\My_Math.h ..\Uitls\Inc\My_FFT.h ..\Uitls\Inc\CallBack.h \
-  ..\Uitls\Inc\Justfloat.h
+  ..\Uitls\Inc\Justfloat.h ..\Uitls\Inc\fpga_capture.h \
+  ..\Uitls\Inc\signal_analyzer.h ..\Uitls\Inc\hmi_display.h
