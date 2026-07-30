@@ -715,16 +715,6 @@
               <FileType>5</FileType>
               <FilePath>..\Uitls\Inc\signal_analyzer.h</FilePath>
             </File>
-            <File>
-              <FileName>hmi_display.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Uitls\Src\hmi_display.c</FilePath>
-            </File>
-            <File>
-              <FileName>hmi_display.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Uitls\Inc\hmi_display.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
