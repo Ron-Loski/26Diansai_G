@@ -14,6 +14,7 @@
 #define MAX_ANALYSIS_HZ 500000.0f
 #define MIN_COMPONENT_PEAK_MV 2.5f
 #define MIN_COMPONENT_RATIO 0.02f
+#define COMPONENT_GATE_MARGIN 0.8f
 #define NOISE_THRESHOLD_MULTIPLIER 6.0f
 #define ADC_DIRECT_GAIN_CORRECTION 0.968936f
 #define DEFAULT_INPUT_MV_PER_CODE \
@@ -216,7 +217,15 @@ static uint32_t DetectPeaks(Peak_t peaks[ANALYZER_MAX_COMPONENTS])
   noise_amplitude =
       (noise_count != 0U) ? (4.0f * noise_sum /
        ((float)noise_count * (float)FFT_SIZE)) : 0.0f;
-  threshold = fmaxf(MIN_COMPONENT_PEAK_MV / DEFAULT_INPUT_MV_PER_CODE,
+  /*
+   * Keep a 20% acquisition margin below the nominal 2.5 mV peak
+   * component limit. A component exactly at the nominal limit otherwise
+   * flickers as FFT interpolation and ADC noise move it across the gate.
+   * The independent 6x noise gate still rejects an elevated noise floor.
+   */
+  threshold = fmaxf(
+      MIN_COMPONENT_PEAK_MV * COMPONENT_GATE_MARGIN /
+          DEFAULT_INPUT_MV_PER_CODE,
                     NOISE_THRESHOLD_MULTIPLIER * noise_amplitude);
 
   if (first_bin < 1U)
@@ -275,7 +284,9 @@ static uint32_t DetectPeaks(Peak_t peaks[ANALYZER_MAX_COMPONENTS])
 
   if (candidate_count != 0U)
     strongest = candidates[0].peak.amplitude_code;
-  threshold = fmaxf(threshold, strongest * MIN_COMPONENT_RATIO);
+  threshold = fmaxf(
+      threshold,
+      strongest * MIN_COMPONENT_RATIO * COMPONENT_GATE_MARGIN);
   for (bin = 0U; bin < candidate_count &&
                 count < ANALYZER_MAX_COMPONENTS; ++bin)
   {
