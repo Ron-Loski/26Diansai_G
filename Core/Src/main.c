@@ -111,9 +111,9 @@ int main(void)
   {
     printf("ANALYZER_ERROR,fpga_capture_init\r\n");
   }
-  printf("ANALYZER_FW,H743VI_WEAK_HARMONIC_MARGIN,build=20260731_1600\r\n");
-  printf("ANALYZER_CAL,profile=adc_direct,scale=0.968936,"
-         "mv_per_code=2.365566\r\n");
+  printf("ANALYZER_FW,H743VI_GAIN_CAL,build=20260731_1900\r\n");
+  printf("ANALYZER_CAL,profile=adc_direct,version=4,scale=0.977656,"
+         "mv_per_code=2.386855\r\n");
   printf("SPI3_PINCHECK,mode=%lu,pupd=%lu,af=%lu,idr=%lu\r\n",
          (unsigned long)((GPIOC->MODER >> (11U * 2U)) & 3U),
          (unsigned long)((GPIOC->PUPDR >> (11U * 2U)) & 3U),
@@ -137,7 +137,7 @@ int main(void)
       AnalyzerStatusTick = HAL_GetTick();
       printf("ANALYZER_STATUS,pll=%u,cfg=%u,busy=%u,ready=%u,"
              "frame=%u,otr=%lu,good=%lu,crc=%lu,protocol=%lu,dma=%lu,"
-             "fw=1600,pc11_mode=%lu,pc11_pupd=%lu,pc11_af=%lu,"
+             "fw=1900,pc11_mode=%lu,pc11_pupd=%lu,pc11_af=%lu,"
              "pc11_idr=%lu\r\n",
              status->pll_locked, status->adc_configured,
              status->capture_busy, status->frame_ready, status->frame_id,

@@ -16,10 +16,10 @@
 #define MIN_COMPONENT_RATIO 0.02f
 #define COMPONENT_GATE_MARGIN 0.8f
 #define NOISE_THRESHOLD_MULTIPLIER 6.0f
-#define ADC_DIRECT_GAIN_CORRECTION 0.968936f
+#define ADC_DIRECT_GAIN_CORRECTION 0.977656f
 #define DEFAULT_INPUT_MV_PER_CODE \
   ((10000.0f / 4096.0f) * ADC_DIRECT_GAIN_CORRECTION)
-#define CALIBRATION_VERSION 3U
+#define CALIBRATION_VERSION 4U
 #define CALIBRATION_FLASH_ADDRESS 0x081E0000UL
 #define CALIBRATION_FLASH_WORDS 13U
 
@@ -377,6 +377,8 @@ uint8_t SignalAnalyzer_Process(const int16_t *samples,
   float reconstructed_min = 1.0e30f;
   float reconstructed_max = -1.0e30f;
   float sum_square = 0.0f;
+  const float frequency_margin_hz =
+      FPGA_CAPTURE_SAMPLE_RATE_HZ / (float)FFT_SIZE;
   uint32_t start_cycles;
   uint32_t i;
   uint32_t component;
@@ -408,15 +410,19 @@ uint8_t SignalAnalyzer_Process(const int16_t *samples,
     return 0U;
 
   fundamental = EstimateFundamental(peaks, count);
-  if (fundamental < MIN_ANALYSIS_HZ -
-          FPGA_CAPTURE_SAMPLE_RATE_HZ / (float)FFT_SIZE ||
-      fundamental > MAX_ANALYSIS_HZ +
-          FPGA_CAPTURE_SAMPLE_RATE_HZ / (float)FFT_SIZE)
+  if (fundamental < MIN_ANALYSIS_HZ - frequency_margin_hz ||
+      fundamental > MAX_ANALYSIS_HZ + frequency_margin_hz)
     return 0U;
   if (fundamental < MIN_ANALYSIS_HZ)
     fundamental = MIN_ANALYSIS_HZ;
-  if (fundamental > MAX_ANALYSIS_HZ)
-    fundamental = MAX_ANALYSIS_HZ;
+  /*
+   * A valid 10 kHz input is biased slightly below the lower boundary by
+   * FFT peak interpolation, so retain the 10 kHz clamp on that side.  At
+   * 500 kHz, however, clamping a slightly high estimate before JointFit
+   * introduces a frequency mismatch and frame-dependent amplitude error.
+   * Keep the upper-bound estimate while the one-bin guard above continues
+   * to reject signals that are genuinely outside the analysis band.
+   */
   if (JointFit(fundamental, peaks, count, coefficients) == 0U)
     return 0U;
 
