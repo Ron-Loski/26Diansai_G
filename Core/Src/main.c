@@ -111,7 +111,7 @@ int main(void)
   {
     printf("ANALYZER_ERROR,fpga_capture_init\r\n");
   }
-  printf("ANALYZER_FW,H743VI_WEAK_HARMONIC_MARGIN,build=20260731_1600\r\n");
+  printf("ANALYZER_FW,H743VI_62M5_PROTOCOL_V2,build=20260731_2200\r\n");
   printf("ANALYZER_CAL,profile=adc_direct,scale=0.968936,"
          "mv_per_code=2.365566\r\n");
   printf("SPI3_PINCHECK,mode=%lu,pupd=%lu,af=%lu,idr=%lu\r\n",
@@ -119,8 +119,8 @@ int main(void)
          (unsigned long)((GPIOC->PUPDR >> (11U * 2U)) & 3U),
          (unsigned long)((GPIOC->AFR[1] >> ((11U - 8U) * 4U)) & 15U),
          (unsigned long)((GPIOC->IDR >> 11U) & 1U));
-  printf("ANALYZER_START,raw_fs=25000000,decimation=13,"
-         "analysis_fs=1923076.923,n=4096,spi=SPI3_12MHz\r\n");
+  printf("ANALYZER_START,raw_fs=62500000,decimation=32,"
+         "analysis_fs=1953125.000,n=4096,protocol=2,spi=SPI3_12MHz\r\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -135,11 +135,12 @@ int main(void)
     {
       const FPGA_CaptureStatus_t *status = FPGACapture_GetStatus();
       AnalyzerStatusTick = HAL_GetTick();
-      printf("ANALYZER_STATUS,pll=%u,cfg=%u,busy=%u,ready=%u,"
+      printf("ANALYZER_STATUS,pll=%u,cfg=%u,filter=%u,busy=%u,ready=%u,"
              "frame=%u,otr=%lu,good=%lu,crc=%lu,protocol=%lu,dma=%lu,"
-             "fw=1600,pc11_mode=%lu,pc11_pupd=%lu,pc11_af=%lu,"
+             "fw=2200,pc11_mode=%lu,pc11_pupd=%lu,pc11_af=%lu,"
              "pc11_idr=%lu\r\n",
              status->pll_locked, status->adc_configured,
+             status->filter_error,
              status->capture_busy, status->frame_ready, status->frame_id,
              (unsigned long)status->otr_count,
              (unsigned long)status->good_frames,
@@ -197,7 +198,7 @@ int main(void)
       if (wave_dump_request == 1U)
       {
         uint32_t i;
-        printf("WAVE_RAW_BEGIN,frame=%u,fs=1923076.923,count=4096\r\n",
+        printf("WAVE_RAW_BEGIN,frame=%u,fs=1953125.000,count=4096\r\n",
                capture_status->frame_id);
         for (i = 0U; i < FPGA_CAPTURE_SAMPLE_COUNT; ++i)
         {

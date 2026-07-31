@@ -1,20 +1,19 @@
-# 50 MHz board oscillator and derived 25 MHz ADC output clock.
+# 50 MHz board oscillator and derived 62.5 MHz ADC output clock.
 create_clock -name clk_50m -period 20.000 [get_ports clk]
 derive_pll_clocks
+derive_clock_uncertainty
 
-# AD9233 source-synchronous data interface at 25 MSPS.
-# Using the adjacent falling edge gives a nominal 20 ns half-cycle window.
-# AD9233 setup/hold limits plus 0.5 ns cable/adapter skew:
-#   max = (20.0 - 2.6) + 0.5 = 17.9 ns
-#   min = (3.7 - 20.0) - 0.5 = -16.8 ns
-create_clock -name adc_dco -period 40.000 [get_ports adc_dco_i]
-set_input_delay -clock adc_dco -clock_fall -max 17.900 \
+# AD9233-80 conservative source-synchronous constraints at 62.5 MSPS.
+# Data is launched for the adjacent rising edge; values below include the
+# specified 4.9 ns setup, 5.9 ns hold and 0.5 ns interconnect skew budget.
+create_clock -name adc_dco -period 16.000 [get_ports adc_dco_i]
+set_input_delay -clock adc_dco -clock_fall -max 3.600 \
 	[get_ports {adc_data_i[*] adc_otr_i}]
-set_input_delay -clock adc_dco -clock_fall -min -16.800 \
+set_input_delay -clock adc_dco -clock_fall -min -2.600 \
 	[get_ports {adc_data_i[*] adc_otr_i}]
 
-# MCU SPI2: 75 MHz kernel clock / 4 = 18.75 MHz, mode 2.
-create_clock -name mcu_spi_sck -period 53.333 [get_ports mcu_spi_sck]
+# STM32H743 SPI3: 192 MHz kernel clock / 16 = 12 MHz, mode 2.
+create_clock -name mcu_spi_sck -period 83.333 [get_ports mcu_spi_sck]
 set_input_delay -clock mcu_spi_sck -clock_fall -max 3.000 \
 	[get_ports mcu_spi_mosi]
 set_input_delay -clock mcu_spi_sck -clock_fall -min 0.000 \

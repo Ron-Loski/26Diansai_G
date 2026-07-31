@@ -1,16 +1,16 @@
-Fitter Status : Successful - Fri Jul 31 12:05:35 2026
+Fitter Status : Successful - Fri Jul 31 18:55:08 2026
 Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Full Version
 Revision Name : DAC904_HighSpeedDAC
 Top-level Entity Name : DAC904_WriteTEST
 Family : Cyclone IV E
 Device : EP4CE10F17C8
 Timing Models : Final
-Total logic elements : 8,379 / 10,320 ( 81 % )
-    Total combinational functions : 6,132 / 10,320 ( 59 % )
-    Dedicated logic registers : 4,984 / 10,320 ( 48 % )
-Total registers : 4984
+Total logic elements : 6,700 / 10,320 ( 65 % )
+    Total combinational functions : 4,761 / 10,320 ( 46 % )
+    Dedicated logic registers : 4,394 / 10,320 ( 43 % )
+Total registers : 4407
 Total pins : 42 / 180 ( 23 % )
 Total virtual pins : 25
 Total memory bits : 147,456 / 423,936 ( 35 % )
-Embedded Multiplier 9-bit elements : 18 / 46 ( 39 % )
+Embedded Multiplier 9-bit elements : 14 / 46 ( 30 % )
 Total PLLs : 1 / 2 ( 50 % )

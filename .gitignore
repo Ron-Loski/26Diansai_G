@@ -1,0 +1,21 @@
+# Quartus transient databases and messages
+FPGA_sendwave/prj/db/
+FPGA_sendwave/prj/incremental_db/
+FPGA_sendwave/prj/*.smsg
+FPGA_sendwave/prj/*.done
+FPGA_sendwave/prj/*.jdi
+FPGA_sendwave/prj/PLLJ_PLLSPE_INFO.txt
+FPGA_sendwave/prj/*.rpt
+FPGA_sendwave/prj/*.pin
+FPGA_sendwave/prj/*.summary
+
+# ModelSim transient work library
+FPGA_sendwave/sim/work/
+FPGA_sendwave/sim/transcript
+FPGA_sendwave/sim/vectors/
+work62/
+
+# Keil transient objects/dependencies and personal UI files
+MDK-ARM/Project/*.o
+MDK-ARM/Project/*.d
+MDK-ARM/*.uvguix.*

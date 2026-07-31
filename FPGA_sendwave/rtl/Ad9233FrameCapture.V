@@ -4,7 +4,6 @@
 // 1 MHz, then every 13th filtered conversion is kept. The frozen frame is
 // read through a second, SPI-clocked RAM port.
 module Ad9233FrameCapture #(
-	parameter integer DECIMATION = 13,
 	parameter integer SAMPLE_COUNT = 4096
 	)(
 	input  wire        rstn,
@@ -21,21 +20,28 @@ module Ad9233FrameCapture #(
 	output reg         capture_busy,
 	output reg         frame_ready,
 	output reg  [15:0] frame_id,
-	output reg  [31:0] otr_count
+	output reg  [31:0] otr_count,
+	output wire        filter_error,
+	output wire [15:0] filter_overrun_count,
+	output wire [15:0] filter_saturation_count
 	);
 
 	reg [2:0] arm_sync;
 	reg [11:0] write_address;
-	wire [11:0] filtered_sample;
+	wire signed [11:0] filtered_sample;
 	wire filtered_valid;
 	wire ram_write_enable = capture_busy && filtered_valid;
 
-	Ad9233DecimatingFir anti_alias_fir(
+	Ad9233MultistageDecimator anti_alias_fir(
 		.rstn(rstn),
 		.dco(dco),
+		.sample_valid_in(cfg_ready),
 		.sample_in(adc_data),
 		.sample_out(filtered_sample),
-		.sample_valid(filtered_valid)
+		.sample_valid(filtered_valid),
+		.filter_error(filter_error),
+		.overrun_count(filter_overrun_count),
+		.saturation_count(filter_saturation_count)
 		);
 
 	always @(posedge dco or negedge rstn) begin

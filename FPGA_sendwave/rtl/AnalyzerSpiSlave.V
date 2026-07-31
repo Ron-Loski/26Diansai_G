@@ -15,6 +15,7 @@ module AnalyzerSpiSlave(
 	input  wire        cfg_done_async,
 	input  wire        capture_busy_async,
 	input  wire        frame_ready_async,
+	input  wire        filter_error_async,
 	input  wire [15:0] frame_id_async,
 	input  wire [31:0] otr_count_async,
 
@@ -29,8 +30,8 @@ module AnalyzerSpiSlave(
 	localparam [15:0] CMD_ARM = 16'h0001;
 	localparam [15:0] CMD_STATUS = 16'h0002;
 	localparam [15:0] CMD_READ = 16'h0003;
-	localparam [15:0] PROTOCOL_VERSION = 16'h0001;
-	localparam [15:0] SAMPLE_RATE_KHZ = 16'd1923;
+	localparam [15:0] PROTOCOL_VERSION = 16'h0002;
+	localparam [15:0] SAMPLE_RATE_KHZ = 16'd1953;
 	localparam [15:0] SAMPLE_COUNT = 16'd4096;
 
 	function [15:0] crc16_word;
@@ -50,25 +51,27 @@ module AnalyzerSpiSlave(
 		end
 	endfunction
 
-	reg [2:0] status_sync_0;
-	reg [2:0] status_sync_1;
-	reg [2:0] status_sync_2;
+	reg [3:0] status_sync_0;
+	reg [3:0] status_sync_1;
+	reg [3:0] status_sync_2;
 	reg [1:0] ready_sync;
 	wire pll_locked = status_sync_2[0];
 	wire cfg_done = status_sync_2[1];
 	wire capture_busy = status_sync_2[2];
+	wire filter_error = status_sync_2[3];
 	wire frame_ready = ready_sync[1];
 
 	always @(negedge spi_sck or negedge rstn) begin
 		if (!rstn) begin
-			status_sync_0 <= 3'b000;
-			status_sync_1 <= 3'b000;
-			status_sync_2 <= 3'b000;
+			status_sync_0 <= 4'b0000;
+			status_sync_1 <= 4'b0000;
+			status_sync_2 <= 4'b0000;
 			ready_sync <= 2'b00;
 		end
 		else begin
 			status_sync_0 <= {
-				capture_busy_async, cfg_done_async, pll_locked_async
+				filter_error_async, capture_busy_async,
+				cfg_done_async, pll_locked_async
 			};
 			status_sync_1 <= status_sync_0;
 			status_sync_2 <= status_sync_1;
@@ -79,7 +82,7 @@ module AnalyzerSpiSlave(
 	wire [15:0] live_status_flags = {
 		9'd0,
 		(crc_error_count != 0),
-		1'b0,
+		filter_error,
 		(otr_count_async != 0),
 		frame_ready,
 		capture_busy,

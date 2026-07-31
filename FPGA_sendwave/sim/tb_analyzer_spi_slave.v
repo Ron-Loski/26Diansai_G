@@ -23,6 +23,7 @@ module tb_analyzer_spi_slave;
 		.cfg_done_async(1'b1),
 		.capture_busy_async(1'b0),
 		.frame_ready_async(1'b1),
+		.filter_error_async(1'b0),
 		.frame_id_async(16'h002A),
 		.otr_count_async(32'h00000000),
 		.arm_toggle(arm_toggle),
@@ -67,7 +68,7 @@ module tb_analyzer_spi_slave;
 
 		spi_word(16'h0000, rx_word);
 		$display("response[1]=%04h", rx_word);
-		if (rx_word !== 16'h0001) errors = errors + 1;
+		if (rx_word !== 16'h0002) errors = errors + 1;
 
 		spi_word(16'h0000, rx_word);
 		$display("response[2]=%04h", rx_word);
@@ -76,6 +77,10 @@ module tb_analyzer_spi_slave;
 		spi_word(16'h0000, rx_word);
 		$display("response[3]=%04h", rx_word);
 		if (rx_word !== 16'h002A) errors = errors + 1;
+
+		spi_word(16'h0000, rx_word);
+		$display("response[4]=%04h", rx_word);
+		if (rx_word !== 16'd1953) errors = errors + 1;
 
 		spi_cs_n = 1'b1;
 		#100;

@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 #define FPGA_CAPTURE_SAMPLE_COUNT 4096U
-#define FPGA_CAPTURE_SAMPLE_RATE_HZ (25000000.0f / 13.0f)
+#define FPGA_CAPTURE_SAMPLE_RATE_HZ (62500000.0f / 32.0f)
 
 typedef struct
 {
@@ -16,6 +16,7 @@ typedef struct
   uint8_t capture_busy;
   uint8_t frame_ready;
   uint8_t otr_seen;
+  uint8_t filter_error;
   uint8_t spi_error;
   uint16_t frame_id;
   uint32_t otr_count;

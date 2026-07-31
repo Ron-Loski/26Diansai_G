@@ -7,7 +7,8 @@
 
 #define FPGA_REQUEST_SYNC 0xA55AU
 #define FPGA_RESPONSE_SYNC 0x5AA5U
-#define FPGA_PROTOCOL_VERSION 0x0001U
+#define FPGA_PROTOCOL_VERSION 0x0002U
+#define FPGA_SAMPLE_RATE_KHZ 1953U
 #define FPGA_CMD_ARM 0x0001U
 #define FPGA_CMD_STATUS 0x0002U
 #define FPGA_CMD_READ 0x0003U
@@ -23,6 +24,7 @@
 #define FPGA_FLAG_CAPTURE_BUSY (1U << 2)
 #define FPGA_FLAG_FRAME_READY (1U << 3)
 #define FPGA_FLAG_OTR_SEEN (1U << 4)
+#define FPGA_FLAG_FILTER_ERROR (1U << 5)
 #define FPGA_FLAG_SPI_ERROR (1U << 6)
 
 typedef enum
@@ -122,7 +124,9 @@ static uint8_t ReadStatus(void)
   ChipSelect(0U);
 
   if ((RxWords[4] != FPGA_RESPONSE_SYNC) ||
-      (RxWords[5] != FPGA_PROTOCOL_VERSION))
+      (RxWords[5] != FPGA_PROTOCOL_VERSION) ||
+      (RxWords[8] != FPGA_SAMPLE_RATE_KHZ) ||
+      (RxWords[9] != FPGA_CAPTURE_SAMPLE_COUNT))
   {
     CaptureStatus.protocol_errors++;
     if ((HAL_GetTick() - RawDebugTick) >= 1000U)
@@ -162,6 +166,8 @@ static uint8_t ReadStatus(void)
       (uint8_t)((flags & FPGA_FLAG_FRAME_READY) != 0U);
   CaptureStatus.otr_seen =
       (uint8_t)((flags & FPGA_FLAG_OTR_SEEN) != 0U);
+  CaptureStatus.filter_error =
+      (uint8_t)((flags & FPGA_FLAG_FILTER_ERROR) != 0U);
   CaptureStatus.spi_error =
       (uint8_t)((flags & FPGA_FLAG_SPI_ERROR) != 0U);
   CaptureStatus.frame_id = RxWords[7];
@@ -199,6 +205,7 @@ static uint8_t ValidateReadFrame(void)
 
   if ((RxWords[response] != FPGA_RESPONSE_SYNC) ||
       (RxWords[response + 1U] != FPGA_PROTOCOL_VERSION) ||
+      (RxWords[response + 4U] != FPGA_SAMPLE_RATE_KHZ) ||
       (RxWords[response + 5U] != FPGA_CAPTURE_SAMPLE_COUNT))
   {
     CaptureStatus.protocol_errors++;
@@ -293,7 +300,9 @@ void FPGACapture_Service(void)
       if ((HAL_GetTick() - StateTick) >= 3U)
       {
         StateTick = HAL_GetTick();
-        if (ReadStatus() != 0U && CaptureStatus.frame_ready != 0U)
+        if ((ReadStatus() != 0U) &&
+            (CaptureStatus.frame_ready != 0U) &&
+            (CaptureStatus.filter_error == 0U))
         {
           if (StartReadDMA() == HAL_OK)
           {

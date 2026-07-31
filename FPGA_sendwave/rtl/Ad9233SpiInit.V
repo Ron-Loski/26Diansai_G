@@ -5,7 +5,8 @@
 // half-period of five cycles, SCLK is 5 MHz.
 module Ad9233SpiInit #(
 	parameter integer STARTUP_DELAY_CYCLES = 5000000,
-	parameter integer SPI_HALF_PERIOD_CYCLES = 5
+	parameter integer SPI_HALF_PERIOD_CYCLES = 5,
+	parameter integer TEST_MODE = 0
 	)(
 	input  wire clk,
 	input  wire rstn,
@@ -26,18 +27,19 @@ module Ad9233SpiInit #(
 	reg [2:0] state;
 	reg [23:0] startup_count;
 	reg [7:0] half_count;
-	reg [1:0] frame_index;
+	reg [2:0] frame_index;
 	reg [4:0] bit_index;
 	reg [23:0] shift_data;
 
 	function [23:0] config_frame;
-		input [1:0] index;
+		input [2:0] index;
 		begin
 			case (index)
-				2'd0: config_frame = 24'h001401;
-				2'd1: config_frame = 24'h001600;
-				2'd2: config_frame = 24'h0018C0;
-				2'd3: config_frame = 24'h00FF01;
+				3'd0: config_frame = 24'h001401;
+				3'd1: config_frame = 24'h001600;
+				3'd2: config_frame = 24'h0018C0;
+				3'd3: config_frame = {16'h000D, TEST_MODE[7:0]};
+				3'd4: config_frame = 24'h00FF01;
 				default: config_frame = 24'h000000;
 			endcase
 		end
@@ -51,7 +53,7 @@ module Ad9233SpiInit #(
 			state <= STATE_WAIT;
 			startup_count <= 24'd0;
 			half_count <= 8'd0;
-			frame_index <= 2'd0;
+			frame_index <= 3'd0;
 			bit_index <= 5'd23;
 			shift_data <= 24'd0;
 			spi_cs_n <= 1'b1;
@@ -66,7 +68,7 @@ module Ad9233SpiInit #(
 					spi_sclk <= 1'b1;
 					spi_sdio <= 1'b0;
 					cfg_done <= 1'b0;
-					frame_index <= 2'd0;
+					frame_index <= 3'd0;
 					if (!enable) begin
 						startup_count <= 24'd0;
 					end
@@ -125,7 +127,7 @@ module Ad9233SpiInit #(
 					spi_cs_n <= 1'b1;
 					spi_sclk <= 1'b1;
 					spi_sdio <= 1'b0;
-					if (frame_index == 2'd3) begin
+					if (frame_index == 3'd4) begin
 						state <= STATE_DONE;
 					end
 					else begin

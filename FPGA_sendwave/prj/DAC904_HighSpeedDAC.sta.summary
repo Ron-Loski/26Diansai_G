@@ -3,23 +3,23 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'adc_dco'
-Slack : 1.031
-TNS   : 0.000
-
-Type  : Slow 1200mV 85C Model Setup 'mcu_spi_sck'
-Slack : 7.242
+Slack : 1.225
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Setup 'clk_50m'
-Slack : 14.513
+Slack : 14.192
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Setup 'mcu_spi_sck'
+Slack : 22.205
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Setup 'altera_reserved_tck'
-Slack : 41.917
+Slack : 42.625
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'adc_dco'
-Slack : 0.432
+Slack : 0.413
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'altera_reserved_tck'
@@ -27,7 +27,7 @@ Slack : 0.452
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'clk_50m'
-Slack : 0.452
+Slack : 0.453
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'mcu_spi_sck'
@@ -35,55 +35,55 @@ Slack : 0.485
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Recovery 'altera_reserved_tck'
-Slack : 48.516
+Slack : 48.298
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Removal 'altera_reserved_tck'
-Slack : 1.597
-TNS   : 0.000
-
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk_50m'
-Slack : 9.784
+Slack : 1.309
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'adc_dco'
-Slack : 19.397
+Slack : 7.397
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk_50m'
+Slack : 9.785
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'mcu_spi_sck'
-Slack : 26.289
+Slack : 41.315
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 49.449
+Slack : 49.589
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'adc_dco'
-Slack : 0.982
-TNS   : 0.000
-
-Type  : Slow 1200mV 0C Model Setup 'mcu_spi_sck'
-Slack : 7.763
+Slack : 1.358
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'clk_50m'
-Slack : 14.845
+Slack : 14.573
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'mcu_spi_sck'
+Slack : 22.738
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'altera_reserved_tck'
-Slack : 42.384
+Slack : 43.078
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'adc_dco'
-Slack : 0.381
+Slack : 0.400
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'altera_reserved_tck'
-Slack : 0.401
+Slack : 0.400
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'clk_50m'
-Slack : 0.401
+Slack : 0.402
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'mcu_spi_sck'
@@ -91,47 +91,47 @@ Slack : 0.430
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Recovery 'altera_reserved_tck'
-Slack : 48.811
+Slack : 48.569
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Removal 'altera_reserved_tck'
-Slack : 1.432
-TNS   : 0.000
-
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk_50m'
-Slack : 9.772
+Slack : 1.203
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'adc_dco'
-Slack : 19.425
+Slack : 7.423
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk_50m'
+Slack : 9.775
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'mcu_spi_sck'
-Slack : 26.147
+Slack : 41.183
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 49.302
+Slack : 49.482
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'adc_dco'
-Slack : 1.139
-TNS   : 0.000
-
-Type  : Fast 1200mV 0C Model Setup 'mcu_spi_sck'
-Slack : 11.228
+Slack : 2.545
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'clk_50m'
-Slack : 17.630
+Slack : 17.475
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'mcu_spi_sck'
+Slack : 26.208
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'altera_reserved_tck'
-Slack : 46.659
+Slack : 46.942
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'adc_dco'
-Slack : 0.169
+Slack : 0.141
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'altera_reserved_tck'
@@ -139,7 +139,7 @@ Slack : 0.186
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'clk_50m'
-Slack : 0.186
+Slack : 0.187
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'mcu_spi_sck'
@@ -147,27 +147,27 @@ Slack : 0.199
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Recovery 'altera_reserved_tck'
-Slack : 49.536
+Slack : 49.456
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Removal 'altera_reserved_tck'
-Slack : 0.662
-TNS   : 0.000
-
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk_50m'
-Slack : 9.436
+Slack : 0.554
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'adc_dco'
-Slack : 19.189
+Slack : 7.189
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk_50m'
+Slack : 9.434
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'mcu_spi_sck'
-Slack : 25.784
+Slack : 40.805
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 49.454
+Slack : 49.482
 TNS   : 0.000
 
 ------------------------------------------------------------

@@ -1,0 +1,92 @@
+{
+  "scipy_version": "1.15.3",
+  "coefficient_format": "signed Q1.17",
+  "weights": [
+    1.0,
+    0.2
+  ],
+  "raw_sample_rate_hz": 62500000,
+  "total_decimation": 32,
+  "analysis_sample_rate_hz": 1953125.0,
+  "fft_size": 4096,
+  "fft_bin_hz": 476.837158203125,
+  "cascade_passband_ripple_db": 0.003357371080574458,
+  "cascade_minimum_stopband_db": 62.26363851444853,
+  "worst_stopband_frequency_hz": 31250000.0,
+  "stages": [
+    {
+      "name": "stage1",
+      "fs_hz": 62500000.0,
+      "pass_hz": 500000.0,
+      "stop_hz": 14625000.0,
+      "taps": 15,
+      "decimation": 4,
+      "integer_sum": 131069,
+      "unique_coefficients": [
+        -544,
+        -1689,
+        -2368,
+        -154,
+        6975,
+        18109,
+        28679,
+        33053
+      ]
+    },
+    {
+      "name": "stage2",
+      "fs_hz": 15625000.0,
+      "pass_hz": 500000.0,
+      "stop_hz": 2906250.0,
+      "taps": 25,
+      "decimation": 4,
+      "integer_sum": 131073,
+      "unique_coefficients": [
+        169,
+        412,
+        534,
+        144,
+        -1003,
+        -2590,
+        -3525,
+        -2251,
+        2399,
+        10250,
+        19395,
+        26788,
+        29629
+      ]
+    },
+    {
+      "name": "stage3",
+      "fs_hz": 3906250.0,
+      "pass_hz": 500000.0,
+      "stop_hz": 1000000.0,
+      "taps": 39,
+      "decimation": 2,
+      "integer_sum": 131073,
+      "unique_coefficients": [
+        -27,
+        -16,
+        83,
+        131,
+        -92,
+        -408,
+        -177,
+        688,
+        977,
+        -430,
+        -2166,
+        -1143,
+        2788,
+        4436,
+        -937,
+        -8849,
+        -6625,
+        12742,
+        38945,
+        51233
+      ]
+    }
+  ]
+}
