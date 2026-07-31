@@ -12,10 +12,13 @@
 #define TWO_PI_F (2.0f * PI_F)
 #define MIN_ANALYSIS_HZ 10000.0f
 #define MAX_ANALYSIS_HZ 500000.0f
+#define MIN_COMPONENT_PEAK_MV 2.5f
+#define MIN_COMPONENT_RATIO 0.02f
+#define NOISE_THRESHOLD_MULTIPLIER 6.0f
 #define ADC_DIRECT_GAIN_CORRECTION 0.968936f
 #define DEFAULT_INPUT_MV_PER_CODE \
-  ((10000.0f / 4096.0f / 7.9f) * ADC_DIRECT_GAIN_CORRECTION)
-#define CALIBRATION_VERSION 2U
+  ((10000.0f / 4096.0f) * ADC_DIRECT_GAIN_CORRECTION)
+#define CALIBRATION_VERSION 3U
 #define CALIBRATION_FLASH_ADDRESS 0x081E0000UL
 #define CALIBRATION_FLASH_WORDS 13U
 
@@ -213,8 +216,8 @@ static uint32_t DetectPeaks(Peak_t peaks[ANALYZER_MAX_COMPONENTS])
   noise_amplitude =
       (noise_count != 0U) ? (4.0f * noise_sum /
        ((float)noise_count * (float)FFT_SIZE)) : 0.0f;
-  threshold = fmaxf(5.0f / DEFAULT_INPUT_MV_PER_CODE,
-                    6.0f * noise_amplitude);
+  threshold = fmaxf(MIN_COMPONENT_PEAK_MV / DEFAULT_INPUT_MV_PER_CODE,
+                    NOISE_THRESHOLD_MULTIPLIER * noise_amplitude);
 
   if (first_bin < 1U)
     first_bin = 1U;
@@ -272,7 +275,7 @@ static uint32_t DetectPeaks(Peak_t peaks[ANALYZER_MAX_COMPONENTS])
 
   if (candidate_count != 0U)
     strongest = candidates[0].peak.amplitude_code;
-  threshold = fmaxf(threshold, strongest * 0.02f);
+  threshold = fmaxf(threshold, strongest * MIN_COMPONENT_RATIO);
   for (bin = 0U; bin < candidate_count &&
                 count < ANALYZER_MAX_COMPONENTS; ++bin)
   {

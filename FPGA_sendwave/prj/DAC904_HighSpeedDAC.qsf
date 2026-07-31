@@ -150,6 +150,7 @@ set_instance_assignment -name GLOBAL_SIGNAL "GLOBAL CLOCK" -to adc_dco_i
 set_location_assignment PLL_1 -to U0_adc_pll25_inst|altpll_component|auto_generated|pll1
 set_global_assignment -name VERILOG_FILE ../rtl/Ad9233Pll25.V
 set_global_assignment -name VERILOG_FILE ../rtl/Ad9233SpiInit.V
+set_global_assignment -name VERILOG_FILE ../rtl/Ad9233DecimatingFir.V
 set_global_assignment -name VERILOG_FILE ../rtl/Ad9233FrameCapture.V
 set_global_assignment -name VERILOG_FILE ../rtl/AnalyzerSpiSlave.V
 set_global_assignment -name VERILOG_FILE ../rtl/DAC904_WriteTEST.V
@@ -239,6 +240,7 @@ set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[22] -t
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[23] -to adc_debug_status_o[9] -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_NODE_CRC_LOWORD=49956" -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_NODE_CRC_HIWORD=63733" -section_id auto_signaltap_0
+
 
 
 
